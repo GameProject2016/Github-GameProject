@@ -5,28 +5,9 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites">
-    <sprite>sprites\sprite0</sprite>
-    <sprite>sprites\spr_zombie</sprite>
-  </sprites>
-  <backgrounds name="background">
-    <background>background\bg_test</background>
-  </backgrounds>
+  <sprites name="sprites"/>
+  <backgrounds name="background"/>
   <paths name="paths"/>
-  <scripts name="scripts">
-    <script>scripts\destroy.gml</script>
-    <script>scripts\start_countdown.gml</script>
-  </scripts>
-  <fonts name="fonts">
-    <font>fonts\f_countdown</font>
-  </fonts>
-  <objects name="objects">
-    <object>objects\obj_countdown</object>
-    <object>objects\god</object>
-  </objects>
-  <rooms name="rooms">
-    <room>rooms\r_test</room>
-  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
