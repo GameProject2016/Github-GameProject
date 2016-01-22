@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>
 var type = network_socket_tcp;
-var ip = "10.30.30.20";
+var ip = "101.165.16.163";
 var port = 8000;
 socket = network_create_socket(type);
 connection = network_connect(socket,ip,port);
