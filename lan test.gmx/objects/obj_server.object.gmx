@@ -36,6 +36,7 @@ var size = 1024;
 var type = buffer_fixed;
 var allignment = 1;
 buffer = buffer_create(size, type, allignment);
+
 </string>
           </argument>
         </arguments>

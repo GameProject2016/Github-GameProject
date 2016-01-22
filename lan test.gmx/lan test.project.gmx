@@ -9,6 +9,7 @@
     <sprite>sprites\spr_server</sprite>
     <sprite>sprites\spr_other</sprite>
     <sprite>sprites\spr_client</sprite>
+    <sprite>sprites\spr_Zombie</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
