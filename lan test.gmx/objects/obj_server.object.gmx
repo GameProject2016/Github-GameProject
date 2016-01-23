@@ -156,7 +156,7 @@ switch(type_event){
         if (socket == noone){
         socket = async_load[? "socket"];
         instance_create(0,0,obj_other);
-        
+        instance_create(0,0,obj_god);
         }
         break;
         
@@ -166,6 +166,7 @@ switch(type_event){
         with(obj_other){
         instance_destroy();
         }
+        max_clients=0;
         break;
         
     case network_type_data:

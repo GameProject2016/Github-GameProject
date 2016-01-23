@@ -28,9 +28,9 @@
             <string>start_time = 59;
 minutes = start_time;
 seconds = 59;
-if room=rm_Server{
+
 alarm[1] = 1;
-}
+
 var type = network_socket_tcp;
 socket = network_create_socket(type);
 var size = 1024;
@@ -62,11 +62,11 @@ buffer = buffer_create(size, type, allignment);
             <kind>1</kind>
             <string>x = room_width / 2;
 y = 30;
-if room=rm_Server{
+
 minutes = start_time;
 seconds = 59;
 alarm[0] = 30;
-}
+
 </string>
           </argument>
         </arguments>
@@ -89,7 +89,7 @@ alarm[0] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room = rm_Server{
+            <string>
 if(seconds &gt; 0){
     seconds -= 1;
 }
@@ -102,7 +102,7 @@ else if(seconds == 0){
 }
 
 alarm[0] = 30;
-}
+
 </string>
           </argument>
         </arguments>
@@ -125,17 +125,7 @@ alarm[0] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room = rm_Server{
-//send time to client
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 3); // 3 send time
-buffer_write(buffer,buffer_u32, minutes);// 3, minutes
-buffer_write(buffer,buffer_u32,seconds); // 3, minutes, seconds
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
