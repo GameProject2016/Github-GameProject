@@ -17,4 +17,22 @@ switch(message_id){
         y= othery;
         }
         break;
+    
+    case 3:
+        var time_min = buffer_read(buffer, buffer_u32);
+        var time_sec = buffer_read(buffer, buffer_u32);
+        with(obj_countdown){
+            minutes = time_min;
+            seconds = time_sec;
+            
+        }
+        break;
+        
+    case 4:
+        var mx = buffer_read(buffer, buffer_u32);
+        var my = buffer_read(buffer,buffer_u32);
+        with(instance_create(obj_other.x,obj_other.y,obj_bullet)){
+        direction = point_direction(obj_other.x,obj_other.y,mx,my);
+        }
+        break;
 }

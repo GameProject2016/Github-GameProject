@@ -80,6 +80,7 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
+
 </string>
           </argument>
         </arguments>
@@ -104,12 +105,24 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
             <kind>1</kind>
             <string>/// create click + send to server
 instance_create(mouse_x,mouse_y,obj_click);
-
+with(instance_create(x,y,obj_bullet)){
+direction = point_direction(x,y,mouse_x,mouse_y);
+}
 buffer_seek(buffer,buffer_seek_start,0);
 
 buffer_write(buffer,buffer_u8, 1); // 1
 buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
 buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
+
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 4); // 4
+buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
@@ -143,6 +156,7 @@ switch(type_event){
         if (socket == noone){
         socket = async_load[? "socket"];
         instance_create(0,0,obj_other);
+        
         }
         break;
         

@@ -10,18 +10,29 @@
     <sprite>sprites\spr_other</sprite>
     <sprite>sprites\spr_client</sprite>
     <sprite>sprites\spr_Zombie</sprite>
+    <sprite>sprites\spr_bullet</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_received_packet.gml</script>
+    <script>scripts\destroy.gml</script>
+    <script>scripts\start_countdown.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\f_countdown</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_select</object>
     <object>objects\obj_server</object>
     <object>objects\obj_client</object>
     <object>objects\obj_click</object>
     <object>objects\obj_other</object>
+    <object>objects\obj_countdown</object>
+    <object>objects\obj_god</object>
+    <object>objects\obj_bullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
