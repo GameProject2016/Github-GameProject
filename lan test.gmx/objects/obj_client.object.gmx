@@ -35,6 +35,41 @@ var size = 1024;
 var type = buffer_fixed;
 var allignment = 1;
 buffer = buffer_create(size, type, allignment);
+
+// choose shirt colour
+image_speed = 0;
+image_index = 0;
+
+while(image_index == obj_other.image_index){
+    switch(image_index){
+        case 0:
+            image_index += 1;
+            break;
+            
+        case 1:
+            image_index += 1;
+            break;
+            
+        case 2:
+            image_index += 1;
+            break;
+            
+        case 3:
+            image_index += 1;
+            break;
+            
+        case 4:
+            image_index = 0;
+            break;
+    
+    }
+}
+buffer_seek(buffer,buffer_seek_start,0);
+        
+buffer_write(buffer,buffer_u8,5);
+buffer_write(buffer,buffer_u32,image_index);
+        
+network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>
           </argument>
         </arguments>

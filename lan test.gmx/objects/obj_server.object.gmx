@@ -37,6 +37,12 @@ var type = buffer_fixed;
 var allignment = 1;
 buffer = buffer_create(size, type, allignment);
 
+// choose shirt colour
+image_speed = 0;
+
+randomize();
+image_index = irandom(sprite_get_number(spr_server));
+
 </string>
           </argument>
         </arguments>
@@ -155,8 +161,19 @@ switch(type_event){
         // Add a client to socket
         if (socket == noone){
         socket = async_load[? "socket"];
-        instance_create(0,0,obj_other);
-        instance_create(0,0,obj_god);
+        instance_create(0,0,obj_other);//create the client object when connected
+        instance_create(0,0,obj_god);//start wave countdown when connected
+        //send plaer sprite to client so not the same
+        var size = 1024;
+        var type = buffer_fixed;
+        var allignment = 1;
+        buffer = buffer_create(size, type, allignment);
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8,5);
+        buffer_write(buffer,buffer_u32,image_index);
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
         }
         break;
         
@@ -166,7 +183,6 @@ switch(type_event){
         with(obj_other){
         instance_destroy();
         }
-        max_clients=0;
         break;
         
     case network_type_data:

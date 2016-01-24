@@ -35,4 +35,9 @@ switch(message_id){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
         }
         break;
+        
+    case 5:
+        var index = buffer_read(buffer,buffer_u32);
+        obj_other.image_index = index;
+        break;
 }

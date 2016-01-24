@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start_time = 59;
+            <string>start_time = 29;
 minutes = start_time;
 seconds = 59;
 

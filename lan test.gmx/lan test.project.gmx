@@ -11,6 +11,7 @@
     <sprite>sprites\spr_client</sprite>
     <sprite>sprites\spr_Zombie</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_test</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
