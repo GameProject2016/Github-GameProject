@@ -78,7 +78,8 @@ global.ip = keyboard_string;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(x,y,global.ip);
+            <string>draw_set_font(f_countdown);
+draw_text(x,y,global.ip);
 </string>
           </argument>
         </arguments>

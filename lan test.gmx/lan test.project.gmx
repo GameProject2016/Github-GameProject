@@ -7,7 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_server</sprite>
-    <sprite>sprites\spr_other</sprite>
+    <sprite>sprites\spr_Wall</sprite>
     <sprite>sprites\spr_client</sprite>
     <sprite>sprites\spr_Zombie</sprite>
     <sprite>sprites\spr_bullet</sprite>
@@ -24,6 +24,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_countdown</font>
+    <font>fonts\font_names</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_select</object>
@@ -34,6 +35,7 @@
     <object>objects\obj_countdown</object>
     <object>objects\obj_god</object>
     <object>objects\obj_bullet</object>
+    <object>objects\obj_Wall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
