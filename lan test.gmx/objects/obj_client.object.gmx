@@ -38,6 +38,7 @@ buffer = buffer_create(size, type, allignment);
 
 // choose shirt colour
 image_speed = 0;
+<<<<<<< HEAD
 image_index = 0;
 
 while(image_index == obj_other.image_index){
@@ -70,6 +71,20 @@ buffer_write(buffer,buffer_u8,5);
 buffer_write(buffer,buffer_u32,image_index);
         
 network_send_packet(socket,buffer, buffer_tell(buffer));
+=======
+
+if(object_get_sprite(obj_client) == spr_server){
+
+    randomize();
+    if(instance_exists(obj_server){
+        image_index = irandom(sprite_get_number(spr_server));
+    }
+    else{
+        image_index = irandom(sprite_get_number(spr_server) &amp;&amp; !obj_server.image_index);
+    }
+    
+}
+>>>>>>> origin/master
 </string>
           </argument>
         </arguments>

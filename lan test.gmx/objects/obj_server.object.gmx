@@ -40,9 +40,18 @@ buffer = buffer_create(size, type, allignment);
 // choose shirt colour
 image_speed = 0;
 
+<<<<<<< HEAD
 randomize();
 image_index = irandom(sprite_get_number(spr_server));
 
+=======
+if(object_get_sprite(self) == spr_server){
+
+    randomize();
+    image_index = irandom(sprite_get_number(spr_server));
+    
+}
+>>>>>>> origin/master
 </string>
           </argument>
         </arguments>
