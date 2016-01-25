@@ -12,9 +12,13 @@
     <sprite>sprites\spr_Zombie</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_test</sprite>
+    <sprite>sprites\spr_Textbox</sprite>
+    <sprite>sprites\spr_host_btn</sprite>
+    <sprite>sprites\spr_join_btn</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -36,6 +40,9 @@
     <object>objects\obj_god</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_Wall</object>
+    <object>objects\obj_textbox</object>
+    <object>objects\obj_start_host</object>
+    <object>objects\obj_join_host</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>

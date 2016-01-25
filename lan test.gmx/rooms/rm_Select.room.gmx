@@ -52,6 +52,9 @@
   </views>
   <instances>
     <instance objName="obj_select" x="256" y="96" name="inst_30E09A1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_textbox" x="128" y="352" name="inst_85FBE5AD" locked="0" code="" scaleX="35" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_start_host" x="224" y="512" name="inst_E381BDFF" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
+    <instance objName="obj_join_host" x="768" y="512" name="inst_CB3F04E2" locked="0" code="" scaleX="6" scaleY="6" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
