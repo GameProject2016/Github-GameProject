@@ -25,6 +25,7 @@
     <script>scripts\scr_received_packet.gml</script>
     <script>scripts\destroy.gml</script>
     <script>scripts\start_countdown.gml</script>
+    <script>scripts\scr_camera_shake.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\f_countdown</font>
@@ -43,6 +44,8 @@
     <object>objects\obj_textbox</object>
     <object>objects\obj_start_host</object>
     <object>objects\obj_join_host</object>
+    <object>objects\obj_Zombie</object>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>

@@ -44,6 +44,13 @@ switch(message_id){
     case 6: //create walls in client
         var wx = buffer_read(buffer, buffer_u32); //wall x
         var wy = buffer_read(buffer,buffer_u32); //wall y
-        instance_create(wx,wy,obj_Wall)
+        instance_create(wx,wy,obj_Wall);
+        break;
+        
+    case 7: //create zombie in client
+        var zx = buffer_read(buffer, buffer_u32); //zonbie x
+        var zy = buffer_read(buffer,buffer_u32); //zonbie y
+        instance_create(zx,zy,obj_Zombie);
+        break;
         
 }

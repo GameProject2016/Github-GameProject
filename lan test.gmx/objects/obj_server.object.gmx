@@ -210,6 +210,7 @@ switch(type_event){
         with(obj_other){
         instance_destroy();
         }
+        max_clients = 0;
         break;
         
     case network_type_data:
