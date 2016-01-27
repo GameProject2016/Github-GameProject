@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+name = "Hi";
 </string>
           </argument>
         </arguments>
@@ -50,11 +51,10 @@
             <kind>1</kind>
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
-if room=rm_Server{
-draw_text(x,y-80,"Humpfri");
-}else{
-draw_text(x,y-80,"Alexis");
-}
+
+draw_text(x,y-80,name);
+
+draw_self();
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialize server object
+            <string>name = global.playername;
+///initialize server object
 var type = network_socket_tcp;
 var port = 8000;
 max_clients = 1;
@@ -65,10 +66,17 @@ image_index = irandom(sprite_get_number(spr_server));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key_left = -keyboard_check(vk_left);
+            <string>if global.controller == "arrows"{
+key_left = -keyboard_check(vk_left);
 key_up = -keyboard_check(vk_up);
 key_right= keyboard_check(vk_right);
 key_down = keyboard_check(vk_down);
+}else{
+key_left = -keyboard_check(ord("A"));
+key_up = -keyboard_check(ord("W"));
+key_right= keyboard_check(ord("D"));
+key_down = keyboard_check(ord("S"));
+}
 
 hsp = 10 * (key_left + key_right);
 vsp = 10 * (key_up + key_down);
@@ -119,6 +127,43 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(instance_create(x,y,obj_grenade)){
+direction = point_direction(x,y,mouse_x,mouse_y);
+
+}
+
+
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 8); // 4
+buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="53">
       <action>
         <libid>1</libid>
@@ -137,17 +182,11 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
           <argument>
             <kind>1</kind>
             <string>/// create click + send to server
-instance_create(mouse_x,mouse_y,obj_click);
+
 with(instance_create(x,y,obj_bullet)){
 direction = point_direction(x,y,mouse_x,mouse_y);
 }
-buffer_seek(buffer,buffer_seek_start,0);
 
-buffer_write(buffer,buffer_u8, 1); // 1
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 
 buffer_seek(buffer,buffer_seek_start,0);
 
@@ -199,6 +238,13 @@ switch(type_event){
         
         buffer_write(buffer,buffer_u8,5);
         buffer_write(buffer,buffer_u32,image_index);
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+        //send name to client
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8,9);
+        buffer_write(buffer,buffer_u32,name);
         
         network_send_packet(socket,buffer, buffer_tell(buffer));
         }
@@ -269,7 +315,7 @@ network_destroy(server);
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
 draw_set_colour(c_green);
-draw_text(x,y-80,"Alexis");
+draw_text(x,y-80,string(name));
 draw_self();
 </string>
           </argument>

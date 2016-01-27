@@ -53,4 +53,18 @@ switch(message_id){
         instance_create(zx,zy,obj_Zombie);
         break;
         
+    case 8: //create grenade
+        var mx = buffer_read(buffer, buffer_u32); //zonbie x
+        var my = buffer_read(buffer,buffer_u32); //zonbie y
+        with(instance_create(other.x,other.y,obj_grenade)){
+        direction = point_direction(other.x,other.y,mx,my);
+        instance_create(mx,my,obj_target);
+        }
+        break;
+        
+    case 9: //recieve and set others name
+        var othername = buffer_read(buffer,buffer_u32); //name
+        obj_other.name = othername;
+        break;
+        
 }
