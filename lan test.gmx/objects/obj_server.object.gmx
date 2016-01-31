@@ -230,7 +230,7 @@ switch(type_event){
         instance_create(0,0,obj_other);//create the client object when connected
         instance_create(0,0,obj_god);//start wave countdown when connected
         //send plaer sprite to client so not the same
-        var size = 1024;
+        /*var size = 1024;
         var type = buffer_fixed;
         var allignment = 1;
         buffer = buffer_create(size, type, allignment);
@@ -246,7 +246,7 @@ switch(type_event){
         buffer_write(buffer,buffer_u8,9);
         buffer_write(buffer,buffer_u32,name);
         
-        network_send_packet(socket,buffer, buffer_tell(buffer));
+        network_send_packet(socket,buffer, buffer_tell(buffer));*/
         }
         break;
         
