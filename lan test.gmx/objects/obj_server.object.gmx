@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = global.playername;
+            <string>/*name = global.playername;
 ///initialize server object
 var type = network_socket_tcp;
 var port = 8000;
@@ -44,6 +44,36 @@ image_speed = 0;
 randomize();
 image_index = irandom(sprite_get_number(spr_server));
 
+
+
+*/
+
+
+
+
+
+
+///initialize server object
+var type = network_socket_tcp;
+var port = 8000;
+max_clients = 1;
+server = network_create_server(type,port,max_clients);
+socket = noone;
+
+var size = 1024;
+var type = buffer_fixed;
+var allignment = 1;
+buffer = buffer_create(size, type, allignment);
+
+// choose shirt colour
+image_speed = 0;
+
+if(object_get_sprite(self) == spr_server){
+
+    randomize();
+    image_index = irandom(sprite_get_number(spr_server));
+    
+}
 </string>
           </argument>
         </arguments>
@@ -66,7 +96,7 @@ image_index = irandom(sprite_get_number(spr_server));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.controller == "arrows"{
+            <string>/*if global.controller == "arrows"{
 key_left = -keyboard_check(vk_left);
 key_up = -keyboard_check(vk_up);
 key_right= keyboard_check(vk_right);
@@ -122,6 +152,34 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
 
+
+
+*/ 
+
+
+
+key_left = -keyboard_check(vk_left);
+key_up = -keyboard_check(vk_up);
+key_right= keyboard_check(vk_right);
+key_down = keyboard_check(vk_down);
+
+hsp = 10 * (key_left + key_right);
+vsp = 10 * (key_up + key_down);
+
+x += hsp;
+ y += vsp;
+ 
+ /// create click + send to server
+
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 2); // 1
+buffer_write(buffer,buffer_u32, x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
+
+
 </string>
           </argument>
         </arguments>
@@ -144,9 +202,9 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x,y,obj_grenade)){
+            <string>/*
+with(instance_create(x,y,obj_grenade)){
 direction = point_direction(x,y,mouse_x,mouse_y);
-
 }
 
 
@@ -181,7 +239,7 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// create click + send to server
+            <string>/*/// create click + send to server
 
 with(instance_create(x,y,obj_bullet)){
 direction = point_direction(x,y,mouse_x,mouse_y);
@@ -198,6 +256,32 @@ buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
+
+*/
+
+
+/// create click + send to server
+instance_create(mouse_x,mouse_y,obj_click);
+with(instance_create(x,y,obj_bullet)){
+direction = point_direction(x,y,mouse_x,mouse_y);
+}
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 1); // 1
+buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
+
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 4); // 4
+buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>
           </argument>
         </arguments>
@@ -220,7 +304,8 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check for clients and data
+            <string>/*
+/// Check for clients and data
 var type_event = async_load[? "type"];
 switch(type_event){
     case network_type_connect:
@@ -246,7 +331,7 @@ switch(type_event){
         buffer_write(buffer,buffer_u8,9);
         buffer_write(buffer,buffer_u32,name);
         
-        network_send_packet(socket,buffer, buffer_tell(buffer));*/
+        network_send_packet(socket,buffer, buffer_tell(buffer));
         }
         break;
         
@@ -257,6 +342,36 @@ switch(type_event){
         instance_destroy();
         }
         max_clients = 0;
+        break;
+        
+    case network_type_data:
+        // handle data
+        var buffer = async_load[? "buffer"]
+        buffer_seek(buffer,buffer_seek_start,0);
+        scr_received_packet(buffer);
+        break;
+}
+
+
+*/
+/// Check for clients and data
+var type_event = async_load[? "type"];
+switch(type_event){
+    case network_type_connect:
+        // Add a client to socket
+        if (socket == noone){
+        socket = async_load[? "socket"];
+        instance_create(0,0,obj_other);
+        
+        }
+        break;
+        
+    case network_type_disconnect:
+        //remove client from socket
+        socket = noone;
+        with(obj_other){
+        instance_destroy();
+        }
         break;
         
     case network_type_data:
@@ -312,7 +427,7 @@ network_destroy(server);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_names);
+            <string>/*draw_set_font(font_names);
 draw_set_halign(fa_center);
 draw_set_colour(c_green);
 draw_text(x,y-80,string(name));
