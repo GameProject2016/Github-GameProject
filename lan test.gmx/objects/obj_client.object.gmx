@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*name = global.playername
+            <string>name = global.playername
 var type = network_socket_tcp;
 var ip = "101.165.16.163";
 var port = 8000;
@@ -79,35 +79,6 @@ buffer_write(buffer,buffer_u32, name);// 1,mouse_x
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
-
-*/
-
-
-var type = network_socket_tcp;
-var ip = "101.165.16.163";
-var port = 8000;
-socket = network_create_socket(type);
-connection = network_connect(socket,ip,port);
-var size = 1024;
-var type = buffer_fixed;
-var allignment = 1;
-buffer = buffer_create(size, type, allignment);
-
-// choose shirt colour
-image_speed = 0;
-
-if(object_get_sprite(obj_client) == spr_server){
-
-    randomize();
-    if(instance_exists(obj_server)){
-        image_index = irandom(sprite_get_number(spr_server));
-    }
-    else{
-        image_index = irandom(sprite_get_number(spr_server) &amp;&amp; !obj_server.image_index);
-    }
-    
-}
-
 </string>
           </argument>
         </arguments>
@@ -130,7 +101,7 @@ if(object_get_sprite(obj_client) == spr_server){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*key_left = -keyboard_check(vk_left);
+            <string>key_left = -keyboard_check(vk_left);
 key_up = -keyboard_check(vk_up);
 key_right= keyboard_check(vk_right);
 key_down = keyboard_check(vk_down);
@@ -177,33 +148,6 @@ buffer_write(buffer,buffer_u32, x);// 1,mouse_x
 buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
-
-
-
-
-
-*/
-
-key_left = -keyboard_check(vk_left);
-key_up = -keyboard_check(vk_up);
-key_right= keyboard_check(vk_right);
-key_down = keyboard_check(vk_down);
-
-hsp = 10 * (key_left + key_right);
-vsp = 10 * (key_up + key_down);
-
-x += hsp;
- y += vsp;
- 
- /// create click + send to server
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 2); // 1
-buffer_write(buffer,buffer_u32, x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>
           </argument>
         </arguments>
@@ -226,39 +170,12 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-/// create click + send to server
+            <string>/// create click + send to server
 
 with(instance_create(x,y,obj_bullet)){
 direction = point_direction(x,y,mouse_x,mouse_y);
 }
 
-//send mouse location to create a bullet
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 4); // 4
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
-
-
-*/
-/// create click + send to server
-instance_create(mouse_x,mouse_y,obj_click);
-with(instance_create(x,y,obj_bullet)){
-direction = point_direction(x,y,mouse_x,mouse_y);
-}
-//create click and send
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 1); // 1
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 //send mouse location to create a bullet
 buffer_seek(buffer,buffer_seek_start,0);
 
@@ -292,8 +209,7 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-/// Check for clients and data
+            <string>/// Check for clients and data
 var type_event = async_load[? "type"];
 switch(type_event){
     case network_type_connect:
@@ -313,26 +229,6 @@ switch(type_event){
 }
 
 
-*/
-
-/// Check for clients and data
-var type_event = async_load[? "type"];
-switch(type_event){
-    case network_type_connect:
-        
-        break;
-        
-    case network_type_disconnect:
-        
-        break;
-        
-    case network_type_data:
-        // handle data
-        var buffer = async_load[? "buffer"]
-        buffer_seek(buffer,buffer_seek_start,0);
-        scr_received_packet(buffer);
-        break;
-}
 
 </string>
           </argument>
