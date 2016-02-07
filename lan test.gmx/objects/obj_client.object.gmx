@@ -133,10 +133,18 @@ if place_meeting(x,y+vsp,obj_Wall){
 y+=vsp;
 
 //keep inside room
-if x &lt; 0{x=0;}
-if y &lt; 0{y=0;}
-if x &gt; room_width{x = room_width;}
-if y &gt; room_height{y = room_height;}
+if(x &lt; obj_client.sprite_width / 2){
+    x = obj_client.sprite_width / 2;
+}
+if(y &lt; obj_client.sprite_height / 2){
+    y = obj_client.sprite_height / 2;
+}
+if(x &gt; (room_width - obj_client.sprite_width / 2)){
+    x = room_width - obj_client.sprite_width / 2;
+}
+if(y = (room_height - obj_client.sprite_height / 2)){
+    y = room_height - obj_client.sprite_height / 2;
+}
 
  
  /// create click + send to server
@@ -146,6 +154,43 @@ buffer_seek(buffer,buffer_seek_start,0);
 buffer_write(buffer,buffer_u8, 2); // 1
 buffer_write(buffer,buffer_u32, x);// 1,mouse_x
 buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(instance_create(x,y,obj_grenade)){
+direction = point_direction(x,y,mouse_x,mouse_y);
+
+}
+
+
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 8); // 4
+buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+
+
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>

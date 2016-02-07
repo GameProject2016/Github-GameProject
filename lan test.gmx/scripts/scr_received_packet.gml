@@ -56,8 +56,8 @@ switch(message_id){
     case 8: //create grenade
         var mx = buffer_read(buffer, buffer_u32); //zonbie x
         var my = buffer_read(buffer,buffer_u32); //zonbie y
-        with(instance_create(other.x,other.y,obj_grenade)){
-        direction = point_direction(other.x,other.y,mx,my);
+        with(instance_create(obj_other.x,obj_other.y,obj_grenade)){
+        direction = point_direction(obj_other.x,obj_other.y,mx,my);
         instance_create(mx,my,obj_target);
         }
         break;

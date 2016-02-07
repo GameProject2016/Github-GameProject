@@ -105,10 +105,18 @@ if place_meeting(x,y+vsp,obj_Wall){
 y+=vsp;
 
 //keep inside room
-if x &lt; 0{x=0;}
-if y &lt; 0{y=0;}
-if x &gt; room_width{x = room_width;}
-if y &gt; room_height{y = room_height;}
+if(x &lt; obj_client.sprite_width / 2){
+    x = obj_client.sprite_width / 2;
+}
+if(y &lt; obj_client.sprite_height / 2){
+    y = obj_client.sprite_height / 2;
+}
+if(x &gt; (room_width - obj_client.sprite_width / 2)){
+    x = room_width - obj_client.sprite_width / 2;
+}
+if(y = (room_height - obj_client.sprite_height / 2)){
+    y = room_height - obj_client.sprite_height / 2;
+}
 
 
 /// create click + send to server
