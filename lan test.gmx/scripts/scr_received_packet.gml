@@ -63,7 +63,7 @@ switch(message_id){
         break;
         
     case 9: //recieve and set others name
-        var othername = buffer_read(buffer,buffer_u32); //name
+        var othername = buffer_read(buffer,buffer_string); //name
         obj_other.name = othername;
         break;
         
