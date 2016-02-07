@@ -44,6 +44,7 @@ image_speed = 0;
 randomize();
 image_index = irandom(sprite_get_number(spr_server));
 
+
 </string>
           </argument>
         </arguments>
@@ -275,6 +276,10 @@ switch(type_event){
         scr_received_packet(buffer);
         break;
 }
+
+
+
+show_message(string(ds_map_find_value(async_load, "ip")));
 </string>
           </argument>
         </arguments>
