@@ -19,7 +19,6 @@
     <sprite>sprites\spr_explodion</sprite>
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_controls</sprite>
-    <sprite>sprites\sprite13</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

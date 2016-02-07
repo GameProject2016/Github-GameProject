@@ -123,11 +123,6 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
 
 max_clients = 1;
 
-
-
-
-
-
 </string>
           </argument>
         </arguments>
