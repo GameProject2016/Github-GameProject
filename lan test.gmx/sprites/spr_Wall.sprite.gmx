@@ -17,10 +17,11 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>65</width>
+  <width>63</width>
   <height>129</height>
   <frames>
     <frame index="0">images\spr_Wall_0.png</frame>
     <frame index="1">images\spr_Wall_1.png</frame>
+    <frame index="2">images\spr_Wall_2.png</frame>
   </frames>
 </sprite>
