@@ -105,17 +105,17 @@ if place_meeting(x,y+vsp,obj_Wall){
 y+=vsp;
 
 //keep inside room
-if(x &lt; obj_client.sprite_width / 2){
-    x = obj_client.sprite_width / 2;
+if(x &lt; obj_server.sprite_width / 2){
+    x = obj_server.sprite_width / 2;
 }
-if(y &lt; obj_client.sprite_height / 2){
-    y = obj_client.sprite_height / 2;
+if(y &lt; obj_server.sprite_height / 2){
+    y = obj_server.sprite_height / 2;
 }
-if(x &gt; (room_width - obj_client.sprite_width / 2)){
-    x = room_width - obj_client.sprite_width / 2;
+if(x &gt; (room_width - obj_server.sprite_width / 2)){
+    x = room_width - obj_server.sprite_width / 2;
 }
-if(y = (room_height - obj_client.sprite_height / 2)){
-    y = room_height - obj_client.sprite_height / 2;
+if(y = (room_height - obj_server.sprite_height / 2)){
+    y = room_height - obj_server.sprite_height / 2;
 }
 
 
