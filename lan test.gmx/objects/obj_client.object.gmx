@@ -31,90 +31,14 @@
 // Using LAN (automatically gets same ip address)
 if(lan == true){
     async_event = http_get( "http://ipv4bot.whatismyipaddress.com/" );
+    
 }
 
-// Different network
-else{
-    name = global.playername
-    var type = network_socket_tcp;
-    var ip = "101.165.16.163";
-    var port = 8000;
-    socket = network_create_socket(type);
-    connection = network_connect(socket,ip,port);
-    var size = 1024;
-    var type = buffer_fixed;
-    var allignment = 1;
-    buffer = buffer_create(size, type, allignment);
-    
-    // choose shirt colour
-    image_speed = 0;
-    image_index = 0;
-    
-    while(image_index == obj_other.image_index){
-        switch(image_index){
-            case 0:
-                image_index += 1;
-                break;
-                
-            case 1:
-                image_index += 1;
-                break;
-                
-            case 2:
-                image_index += 1;
-                break;
-                
-            case 3:
-                image_index += 1;
-                break;
-                
-            case 4:
-                image_index = 0;
-                break;
-        
-        }
-    }
-    buffer_seek(buffer,buffer_seek_start,0);
-            
-    buffer_write(buffer,buffer_u8,5);
-    buffer_write(buffer,buffer_u32,image_index);
-            
-    network_send_packet(socket,buffer, buffer_tell(buffer));
-    
-    //send name
-    buffer_seek(buffer,buffer_seek_start,0);
-    
-    buffer_write(buffer,buffer_u8, 9); // 4
-    buffer_write(buffer,buffer_string, name);// 1,mouse_x
-    
-    network_send_packet(socket,buffer, buffer_tell(buffer));
-}
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>name = global.playername
+
+name = global.playername
 var type = network_socket_tcp;
-//var ip = "101.165.16.163";
+var ip = "101.165.16.163";
 var port = 8000;
 socket = network_create_socket(type);
 connection = network_connect(socket,ip,port);
@@ -148,23 +72,24 @@ while(image_index == obj_other.image_index){
         case 4:
             image_index = 0;
             break;
-    
+        
+        }
     }
-}
-buffer_seek(buffer,buffer_seek_start,0);
-        
-buffer_write(buffer,buffer_u8,5);
-buffer_write(buffer,buffer_u32,image_index);
-        
-network_send_packet(socket,buffer, buffer_tell(buffer));
+    buffer_seek(buffer,buffer_seek_start,0);
+            
+    buffer_write(buffer,buffer_u8,5);
+    buffer_write(buffer,buffer_u32,image_index);
+            
+    network_send_packet(socket,buffer, buffer_tell(buffer));
+    
+    //send name
+    buffer_seek(buffer,buffer_seek_start,0);
+    
+    buffer_write(buffer,buffer_u8, 9); // 4
+    buffer_write(buffer,buffer_string, name);// 1,mouse_x
+    
+    network_send_packet(socket,buffer, buffer_tell(buffer));
 
-//send name
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 9); // 4
-buffer_write(buffer,buffer_string, name);// 1,mouse_x
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 
 </string>
           </argument>
@@ -188,15 +113,56 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key_left = -keyboard_check(vk_left);
+            <string>/// Movement Code
+            
+            
+            /*Setup
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+
+
+
+/*if global.controller == "arrows"{
+key_left = -keyboard_check(vk_left);
 key_up = -keyboard_check(vk_up);
 key_right= keyboard_check(vk_right);
 key_down = keyboard_check(vk_down);
+}else{
+key_left = -keyboard_check(ord("A"));
+key_up = -keyboard_check(ord("W"));
+key_right= keyboard_check(ord("D"));
+key_down = keyboard_check(ord("S"));
+}
+
 
 hsp = 10 * (key_left + key_right);
 vsp = 10 * (key_up + key_down);
 
-//Movement and Collision
+
+*/
+
+var vsp, hsp;
+
+if global.controller == "arrows"{
+
+    key_left = -keyboard_check(vk_left);
+    key_right = keyboard_check(vk_right);
+
+}
+else{
+
+    key_left = -keyboard_check(ord("A"));
+    key_right = keyboard_check(ord("D"));
+
+}
+
+
+hsp = 10 * (key_left + key_right);
+
+
+            /*Movement and Collision
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
 //horizontal collision
 if(place_meeting(x+hsp,y,obj_Wall)){
 
@@ -209,32 +175,79 @@ if(place_meeting(x+hsp,y,obj_Wall)){
 x+=hsp;
 
 //Vertical collision
-if place_meeting(x,y+vsp,obj_Wall){
+if(sign(vsp) == 1){
+    if(place_meeting(x,y + (obj_Wall.sprite_height / 4) + 10, obj_Wall){
+        if(global.controller == "arrows"){
+            while(keyboard_check(vk_down)){
+                 vsp = 0;
+            }
+            
+        }
+        else{
+            while(keyboard_check(ord("S"))){
+                vsp = 0;
+            }
 
-    while(!place_meeting(x,y+sign(vsp),obj_Wall)){
-        y += sign(vsp);
+        }
     }
-    vsp = 0;
-
+    else{
+        vsp = 10;
+    }
 }
-y+=vsp;
+else if(sign(vsp == -1)){
+    if(place_meeting(x, y - (obj_Wall.sprite_height / 4) - 10, obj_Wall){
+        if(global.controller != "arrows"){
+            while(keyboard_check(vk_up)){
+                vsp = 0;
+            }
+            
+        }
+        else{
+            while(keyboard_check(ord("W")))){
+                vsp = 0;
+            }
+            
+        }
+    }
+    else{
+        vsp = -10;
+    }
+}
+
+//y+=vsp;
+
 
 //keep inside room
+
 if(x &lt; obj_client.sprite_width / 2){
+
     x = obj_client.sprite_width / 2;
-}
-if(y &lt; obj_client.sprite_height / 2){
-    y = obj_client.sprite_height / 2;
-}
-if(x &gt; (room_width - obj_client.sprite_width / 2)){
-    x = room_width - obj_client.sprite_width / 2;
-}
-if(y = (room_height - obj_client.sprite_height / 2)){
-    y = room_height - obj_client.sprite_height / 2;
+    
 }
 
- 
- /// create click + send to server
+if(y &lt; obj_client.sprite_height / 2){
+
+    y = obj_client.sprite_height / 2;
+    
+}
+
+if(x &gt; (room_width - obj_client.sprite_width / 2)){
+
+    x = room_width - obj_client.sprite_width / 2;
+    
+}
+
+if(y = (room_height - obj_client.sprite_height / 2)){
+
+    y = room_height - obj_client.sprite_height / 2;
+    
+}
+
+
+            /*Networking
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+// Send packets to buffer
 
 buffer_seek(buffer,buffer_seek_start,0);
 
@@ -388,11 +401,10 @@ switch(type_event){
     if ( ds_map_find_value(async_load, "id") == async_event ) {
         if ( ds_map_find_value(async_load, "status") == 0 ) {
     
-            var ip = ds_map_find_value(async_load, "result");
+            ip = ds_map_find_value(async_load, "result");
     
         }
     }
-    alarm[0] = 1;
 }
 </string>
           </argument>
