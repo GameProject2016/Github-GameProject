@@ -67,16 +67,7 @@ image_index = irandom(sprite_get_number(spr_server));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Movement Code
-            
-            
-            /*Setup
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-
-
-
-/*if global.controller == "arrows"{
+            <string>if global.controller == "arrows"{
 key_left = -keyboard_check(vk_left);
 key_up = -keyboard_check(vk_up);
 key_right= keyboard_check(vk_right);
@@ -88,35 +79,10 @@ key_right= keyboard_check(ord("D"));
 key_down = keyboard_check(ord("S"));
 }
 
-
 hsp = 10 * (key_left + key_right);
 vsp = 10 * (key_up + key_down);
 
-
-*/
-
-var vsp, hsp;
-
-if global.controller == "arrows"{
-
-    key_left = -keyboard_check(vk_left);
-    key_right = keyboard_check(vk_right);
-
-}
-else{
-
-    key_left = -keyboard_check(ord("A"));
-    key_right = keyboard_check(ord("D"));
-
-}
-
-
-hsp = 10 * (key_left + key_right);
-
-
-            /*Movement and Collision
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
+//Movement and Collision
 //horizontal collision
 if(place_meeting(x+hsp,y,obj_Wall)){
 
@@ -129,79 +95,32 @@ if(place_meeting(x+hsp,y,obj_Wall)){
 x+=hsp;
 
 //Vertical collision
-if(sign(vsp) == 1){
-    if(place_meeting(x,y + (obj_Wall.sprite_height / 4) + 10, obj_Wall){
-        if(global.controller == "arrows"){
-            while(keyboard_check(vk_down)){
-                 vsp = 0;
-            }
-            
-        }
-        else{
-            while(keyboard_check(ord("S"))){
-                vsp = 0;
-            }
+if place_meeting(x,y+vsp,obj_Wall){
 
-        }
+    while(!place_meeting(x,y+sign(vsp),obj_Wall)){
+        y += sign(vsp);
     }
-    else{
-        vsp = 10;
-    }
+    vsp = 0;
+
 }
-else if(sign(vsp == -1)){
-    if(place_meeting(x, y - (obj_Wall.sprite_height / 4) - 10, obj_Wall){
-        if(global.controller != "arrows"){
-            while(keyboard_check(vk_up)){
-                vsp = 0;
-            }
-            
-        }
-        else{
-            while(keyboard_check(ord("W")))){
-                vsp = 0;
-            }
-            
-        }
-    }
-    else{
-        vsp = -10;
-    }
-}
-
-//y+=vsp;
-
+y+=vsp;
 
 //keep inside room
-
 if(x &lt; obj_server.sprite_width / 2){
-
     x = obj_server.sprite_width / 2;
-    
 }
-
 if(y &lt; obj_server.sprite_height / 2){
-
     y = obj_server.sprite_height / 2;
-    
 }
-
 if(x &gt; (room_width - obj_server.sprite_width / 2)){
-
     x = room_width - obj_server.sprite_width / 2;
-    
 }
-
 if(y = (room_height - obj_server.sprite_height / 2)){
-
     y = room_height - obj_server.sprite_height / 2;
-    
 }
 
 
-            /*Networking
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-// Send packets to buffer
+/// create click + send to server
 
 buffer_seek(buffer,buffer_seek_start,0);
 
