@@ -44,6 +44,11 @@ image_speed = 0;
 randomize();
 image_index = irandom(sprite_get_number(spr_server));
 
+// Set Variables
+grenades = 5;
+ammo = 30;
+hp = 5;
+
 </string>
           </argument>
         </arguments>
@@ -66,60 +71,15 @@ image_index = irandom(sprite_get_number(spr_server));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.controller == "arrows"{
-key_left = -keyboard_check(vk_left);
-key_up = -keyboard_check(vk_up);
-key_right= keyboard_check(vk_right);
-key_down = keyboard_check(vk_down);
-}else{
-key_left = -keyboard_check(ord("A"));
-key_up = -keyboard_check(ord("W"));
-key_right= keyboard_check(ord("D"));
-key_down = keyboard_check(ord("S"));
-}
+            <string>//Get input
+scr_get_input();
 
 hsp = 10 * (key_left + key_right);
 vsp = 10 * (key_up + key_down);
 
-//Movement and Collision
-//horizontal collision
-if(place_meeting(x+hsp,y,obj_Wall)){
-
-    while(!place_meeting(x+sign(hsp),y,obj_Wall)){
-        x+=sign(hsp);
-    }
-    hsp = 0;
-
-}
-x+=hsp;
-
-//Vertical collision
-if place_meeting(x,y+vsp,obj_Wall){
-
-    while(!place_meeting(x,y+sign(vsp),obj_Wall)){
-        y += sign(vsp);
-    }
-    vsp = 0;
-
-}
-y+=vsp;
-
-//keep inside room
-if(x &lt; obj_server.sprite_width / 2){
-    x = obj_server.sprite_width / 2;
-}
-if(y &lt; obj_server.sprite_height / 2){
-    y = obj_server.sprite_height / 2;
-}
-if(x &gt; (room_width - obj_server.sprite_width / 2)){
-    x = room_width - obj_server.sprite_width / 2;
-}
-if(y = (room_height - obj_server.sprite_height / 2)){
-    y = room_height - obj_server.sprite_height / 2;
-}
 
 
-/// create click + send to server
+/// Send location
 
 buffer_seek(buffer,buffer_seek_start,0);
 
@@ -129,7 +89,7 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
-max_clients = 1;
+
 
 </string>
           </argument>
@@ -153,21 +113,24 @@ max_clients = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x,y,obj_grenade)){
-direction = point_direction(x,y,mouse_x,mouse_y);
-
+            <string>/// Throw grenade
+if grenades &gt; 0{
+    //Create grenade
+    with(instance_create(x,y,obj_grenade)){
+        direction = point_direction(x,y,mouse_x,mouse_y);
+    }
+    
+    //Send grenade
+    if socket != noone{
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8, 8); // 4
+        buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+    }
 }
-
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 8); // 4
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>
           </argument>
         </arguments>
@@ -190,23 +153,22 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// create click + send to server
-
-with(instance_create(x,y,obj_bullet)){
-direction = point_direction(x,y,mouse_x,mouse_y);
+            <string>/// Shoot + send to server
+if ammo &gt; 0{
+    with(instance_create(x,y,obj_bullet)){
+    direction = point_direction(x,y,mouse_x,mouse_y);
+    }
+    
+    if socket != noone{
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8, 4); // 4
+        buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y        
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+    }
 }
-
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 4); // 4
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
-
 </string>
           </argument>
         </arguments>
@@ -235,27 +197,31 @@ switch(type_event){
     case network_type_connect:
         // Add a client to socket
         if (socket == noone){
-        socket = async_load[? "socket"];
-        instance_create(0,0,obj_other);//create the client object when connected
-        instance_create(0,0,obj_god);//start wave countdown when connected
-        //send plaer sprite to client so not the same
-        var size = 1024;
-        var type = buffer_fixed;
-        var allignment = 1;
-        buffer = buffer_create(size, type, allignment);
-        buffer_seek(buffer,buffer_seek_start,0);
+            socket = async_load[? "socket"];
+            
+            instance_create(0,0,obj_other);//create the client object when connected
+            instance_create(0,0,obj_god);//start wave countdown when connected
+            
+            //send plaer sprite to client so not the same
+            var size = 1024;
+            var type = buffer_fixed;
+            var allignment = 1;
+            buffer = buffer_create(size, type, allignment);
+            
+            buffer_seek(buffer,buffer_seek_start,0);
         
-        buffer_write(buffer,buffer_u8,5);
-        buffer_write(buffer,buffer_u32,image_index);
+            buffer_write(buffer,buffer_u8,5);
+            buffer_write(buffer,buffer_u32,image_index);
         
-        network_send_packet(socket,buffer, buffer_tell(buffer));
-        //send name to client
-        buffer_seek(buffer,buffer_seek_start,0);
+            network_send_packet(socket,buffer, buffer_tell(buffer));
+            
+            //send name to client
+            buffer_seek(buffer,buffer_seek_start,0);
         
-        buffer_write(buffer,buffer_u8,9);
-        buffer_write(buffer,buffer_string,name);
+            buffer_write(buffer,buffer_u8,9);
+            buffer_write(buffer,buffer_string,name);
         
-        network_send_packet(socket,buffer, buffer_tell(buffer));
+            network_send_packet(socket,buffer, buffer_tell(buffer));
         }
         break;
         
@@ -263,7 +229,7 @@ switch(type_event){
         //remove client from socket
         socket = noone;
         with(obj_other){
-        instance_destroy();
+            instance_destroy();
         }
         
         break;
