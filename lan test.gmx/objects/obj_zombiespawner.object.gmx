@@ -99,8 +99,7 @@ time += 0.01;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
