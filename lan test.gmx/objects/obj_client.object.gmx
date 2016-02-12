@@ -104,8 +104,9 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
             <string>//get input
 scr_get_input();
 
-
-
+hsp = 10 * (key_left + key_right);
+vsp = 10 * (key_up + key_down);
+scr_move();
  
 /// send position to server
 

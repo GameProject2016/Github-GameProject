@@ -20,7 +20,7 @@
   <width>64</width>
   <height>32</height>
   <frames>
-    <frame index="0">images\spr_host_btn_0.png</frame>
-    <frame index="1">images\spr_host_btn_1.png</frame>
+    <frame index="0">images\spr_offline_0.png</frame>
+    <frame index="1">images\spr_offline_1.png</frame>
   </frames>
 </sprite>
