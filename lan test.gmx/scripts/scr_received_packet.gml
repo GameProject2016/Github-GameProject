@@ -61,6 +61,7 @@ switch(message_id){
         with(instance_create(obj_other.x,obj_other.y,obj_grenade)){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
         the_target = instance_create(mx,my,obj_target);
+        the_target.image_alpha = 0;
         }
         break;
         

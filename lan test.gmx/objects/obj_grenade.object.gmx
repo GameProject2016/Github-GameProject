@@ -52,9 +52,9 @@ slow = 0.05;
             <kind>1</kind>
             <string>image_angle += 3;
 speed -= slow;
-direction = point_direction(x,y,pointx,pointy);
 
-if distance_to_object(the_target) &lt;= 1 {
+
+if distance_to_object(the_target) &lt;= 1 || speed&lt;0.1 {
 
 obj_camera.shaking = true;
 

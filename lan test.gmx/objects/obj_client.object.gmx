@@ -287,7 +287,7 @@ buffer_delete(buffer);
             <kind>1</kind>
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
-draw_text(x,y-80,"Humpfri");
+draw_text(x,y-80,string(name));
 draw_self();
 </string>
           </argument>

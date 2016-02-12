@@ -66,13 +66,18 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room == rm_Server || room == rm_Client{
-    if distance_to_object(obj_server) &lt; distance_to_object(obj_client){
+            <string>if room == rm_Server {
+    if distance_to_object(obj_server) &lt; distance_to_object(obj_other){
         direction = point_direction(x,y, obj_server.x,obj_server.y);
-    }else{
+    }
+       
+    
+}else if room == rm_Client{
+    if distance_to_object(obj_client) &lt; distance_to_object(obj_other){
         direction = point_direction(x,y, obj_client.x,obj_client.y);
     }
-}else if room == rm_offline{
+    
+}else if room==rm_offline{
     direction = point_direction(x,y, obj_server.x,obj_server.y);
 }
 
