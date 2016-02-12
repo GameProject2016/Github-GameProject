@@ -25,23 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room = rm_Server{
-var size = 1024;
-var type = buffer_fixed;
-var allignment = 1;
-buffer = buffer_create(size, type, allignment);
-
-var type = network_socket_tcp;
-socket = network_create_socket(type);
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 7); // 1
-buffer_write(buffer,buffer_u32, x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
-}
+            <string>speed = 4;
+hp = 3;
 
 event_inherited();
 </string>
@@ -69,6 +54,8 @@ event_inherited();
             <string>if room == rm_Server {
     if distance_to_object(obj_server) &lt; distance_to_object(obj_other){
         direction = point_direction(x,y, obj_server.x,obj_server.y);
+    }else{
+        direction = point_direction(x,y, obj_client.x,obj_client.y);
     }
        
     
