@@ -60,7 +60,7 @@ switch(message_id){
         var my = buffer_read(buffer,buffer_u32); //zonbie y
         with(instance_create(obj_other.x,obj_other.y,obj_grenade)){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
-        instance_create(mx,my,obj_target);
+        the_target = instance_create(mx,my,obj_target);
         }
         break;
         

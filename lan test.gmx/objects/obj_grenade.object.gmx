@@ -26,9 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>speed = 8;
-pointx = mouse_x;
-pointy = mouse_y;
-the_target = instance_create(pointx,pointy,obj_target);
+
 slow = 0.05;
 </string>
           </argument>

@@ -119,6 +119,9 @@ if grenades &gt; 0{
     //Create grenade
     with(instance_create(x,y,obj_grenade)){
         direction = point_direction(x,y,mouse_x,mouse_y);
+        pointx = mouse_x;
+        pointy = mouse_y;
+        the_target = instance_create(pointx,pointy,obj_target);
     }
     
     //Send grenade
