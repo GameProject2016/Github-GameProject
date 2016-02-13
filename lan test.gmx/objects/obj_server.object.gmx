@@ -3,7 +3,7 @@
   <spriteName>spr_server</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var bullet;
-name = global.playername;
+            <string>name = global.playername;
 ///initialize server object
 var type = network_socket_tcp;
 var port = 8000;
@@ -53,12 +52,6 @@ hp = 5;
 zx = 0;
 zy = 0;
 zombie = false;
-
-wx = 0;
-wy = 0;
-wall = false;
-
-
 </string>
           </argument>
         </arguments>
@@ -100,7 +93,6 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
-
 if socket != noone{
     if zombie = true{
         buffer_seek(buffer,buffer_seek_start,0);
@@ -111,17 +103,6 @@ if socket != noone{
         
         network_send_packet(socket,buffer, buffer_tell(buffer));
         zombie = false;
-    }
-    
-    if wall = true{
-        buffer_seek(buffer,buffer_seek_start,0);
-           
-        buffer_write(buffer,buffer_u8, 6); // 4
-        buffer_write(buffer,buffer_u32, wx);// 1,mouse_x
-        buffer_write(buffer,buffer_u32,wy); // 1,mouse_x,mouse_y        
-        
-        network_send_packet(socket,buffer, buffer_tell(buffer));
-        wall = false;
     }
 }
 
@@ -192,8 +173,7 @@ if grenades &gt; 0{
             <kind>1</kind>
             <string>/// Shoot + send to server
 if ammo &gt; 0{
-    bullet = instance_create(x,y,obj_bullet);
-    with(bullet){
+    with(instance_create(x,y,obj_bullet)){
     direction = point_direction(x,y,mouse_x,mouse_y);
     }
     
@@ -327,9 +307,7 @@ network_destroy(server);
             <kind>1</kind>
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
-draw_set_colour(c_dkgray);
-draw_text(x - 1,y-82,string(name));
-draw_set_colour(c_ltgray);
+draw_set_colour(c_green);
 draw_text(x,y-80,string(name));
 draw_self();
 </string>

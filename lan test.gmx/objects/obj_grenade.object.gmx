@@ -56,22 +56,12 @@ speed -= slow;
 
 if distance_to_object(the_target) &lt;= 1 || speed&lt;0.1 {
 
-    obj_camera.shaking = true;
-    
-    instance_create(x,y,obj_explosion);
-    destroy(the_target);
-    
-    instance_destroy();
+obj_camera.shaking = true;
 
-}
-else if(distance_to_object(obj_Wall) &lt; 1){
+instance_create(x,y,obj_explosion);
+destroy(the_target);
 
-    obj_camera.shaking = true;
-    
-    instance_create(x,y,obj_explosion);
-    destroy(the_target);
-    
-    instance_destroy();
+instance_destroy();
 
 }
 </string>

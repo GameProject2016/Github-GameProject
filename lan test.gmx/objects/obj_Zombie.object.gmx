@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 3;
-hp = 2;
+            <string>speed = 4;
+hp = 3;
 
 event_inherited();
+
 obj_server.zx = x;
 obj_server.zy = y;
 obj_server.zombie = true;
@@ -59,19 +60,19 @@ obj_server.zombie = true;
         direction = point_direction(x,y, obj_server.x,obj_server.y);
     }else{
         direction = point_direction(x,y, obj_other.x,obj_other.y);
-    }
+    }       
     
 }else if room == rm_Client{
     if distance_to_object(obj_client) &lt; distance_to_object(obj_other){
         direction = point_direction(x,y, obj_client.x,obj_client.y);
-    }
-    else{
+    }else{
         direction = point_direction(x,y, obj_other.x,obj_other.y);
     }
     
 }else if room==rm_offline{
     direction = point_direction(x,y, obj_server.x,obj_server.y);
 }
+
 
 if place_meeting(x,y,obj_bullet) {
     hp -= 1;
@@ -80,37 +81,6 @@ if place_meeting(x,y,obj_bullet) {
         instance_destroy();
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_bullet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>destroy(other);
-
-if(hp != 0){
-    hp -= 2;
-}
-else{
-    instance_destroy();
-}
-
 </string>
           </argument>
         </arguments>
