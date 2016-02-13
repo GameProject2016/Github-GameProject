@@ -50,6 +50,15 @@ grenades = 5;
 ammo = 30;
 hp = 5;
 
+zx = 0;
+zy = 0;
+zombie = false;
+
+wx = 0;
+wy = 0;
+wall = false;
+
+
 </string>
           </argument>
         </arguments>
@@ -92,6 +101,29 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
 
+if socket != noone{
+    if zombie = true{
+        buffer_seek(buffer,buffer_seek_start,0);
+           
+        buffer_write(buffer,buffer_u8, 7); // 4
+        buffer_write(buffer,buffer_u32, zx);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,zy); // 1,mouse_x,mouse_y        
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+        zombie = false;
+    }
+    
+    if wall = true{
+        buffer_seek(buffer,buffer_seek_start,0);
+           
+        buffer_write(buffer,buffer_u8, 6); // 4
+        buffer_write(buffer,buffer_u32, wx);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,wy); // 1,mouse_x,mouse_y        
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+        wall = false;
+    }
+}
 
 </string>
           </argument>

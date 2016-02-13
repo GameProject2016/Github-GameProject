@@ -28,24 +28,28 @@
             <string>image_index = 0;
 image_speed = 0;
 if room == rm_Server{
-var type = network_socket_tcp;
-socket = obj_server.socket;
-
-var size = 1024;
-var type = buffer_fixed;
-var allignment = 1;
-buffer = buffer_create(size, type, allignment);
-
-/// create click + send to server
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 6); // 1
-buffer_write(buffer,buffer_u32, x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
+    var type = network_socket_tcp;
+    socket = obj_server.socket;
+    
+    var size = 1024;
+    var type = buffer_fixed;
+    var allignment = 1;
+    buffer = buffer_create(size, type, allignment);
+    
+    /// create click + send to server
+    
+    buffer_seek(buffer,buffer_seek_start,0);
+    
+    buffer_write(buffer,buffer_u8, 6); // 1
+    buffer_write(buffer,buffer_u32, x);// 1,mouse_x
+    buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
+    
+    network_send_packet(socket,buffer, buffer_tell(buffer));
 }
+
+obj_server.wx = x;
+obj_server.wy = y;
+obj_server.wall = true;
 </string>
           </argument>
         </arguments>

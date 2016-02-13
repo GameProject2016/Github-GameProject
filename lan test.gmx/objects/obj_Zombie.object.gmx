@@ -29,6 +29,9 @@
 hp = 2;
 
 event_inherited();
+obj_server.zx = x;
+obj_server.zy = y;
+obj_server.zombie = true;
 </string>
           </argument>
         </arguments>
@@ -68,6 +71,14 @@ event_inherited();
     
 }else if room==rm_offline{
     direction = point_direction(x,y, obj_server.x,obj_server.y);
+}
+
+if place_meeting(x,y,obj_bullet) {
+    hp -= 1;
+    
+    if hp &lt;= 0{
+        instance_destroy();
+    }
 }
 </string>
           </argument>
