@@ -3,7 +3,7 @@
   <spriteName>spr_server</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = global.playername;
+            <string>var bullet;
+name = global.playername;
 ///initialize server object
 var type = network_socket_tcp;
 var port = 8000;
@@ -159,7 +160,8 @@ if grenades &gt; 0{
             <kind>1</kind>
             <string>/// Shoot + send to server
 if ammo &gt; 0{
-    with(instance_create(x,y,obj_bullet)){
+    bullet = instance_create(x,y,obj_bullet);
+    with(bullet){
     direction = point_direction(x,y,mouse_x,mouse_y);
     }
     
