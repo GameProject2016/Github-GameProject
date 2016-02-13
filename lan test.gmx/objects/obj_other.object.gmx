@@ -52,7 +52,10 @@ name = "Hi";
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
 
-draw_text(x,y-80,name);
+draw_set_colour(c_dkgray);
+draw_text(x - 1,y-82,string(name));
+draw_set_colour(c_ltgray);
+draw_text(x,y-80,string(name));
 
 draw_self();
 </string>
