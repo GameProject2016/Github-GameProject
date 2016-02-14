@@ -169,8 +169,8 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x,y,obj_grenade)){
-direction = point_direction(x,y,mouse_x,mouse_y);
+            <string>with(instance_create(x+1,y-51,obj_grenade)){
+direction = point_direction(x+1,y-51,mouse_x,mouse_y);
 pointx = mouse_x;
 pointy = mouse_y;
 the_target = instance_create(pointx,pointy,obj_target);

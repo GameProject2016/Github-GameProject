@@ -169,7 +169,7 @@ if socket != noone{
         wall = false;
     }
 }
-
+depth = -y;
 </string>
           </argument>
         </arguments>
@@ -195,7 +195,7 @@ if socket != noone{
             <string>/// Throw grenade
 if grenades &gt; 0{
     //Create grenade
-    with(instance_create(x,y,obj_grenade)){
+    with(instance_create(x+1,y-51,obj_grenade)){
         direction = point_direction(x,y,mouse_x,mouse_y);
         pointx = mouse_x;
         pointy = mouse_y;
@@ -264,7 +264,7 @@ if grenades &gt; 0{
     if(can_shoot){
         /// Shoot + send to server
         if ammo &gt; 0{
-            bullet = instance_create(x,y,obj_bullet);
+            bullet = instance_create(x+1,y-51,obj_bullet);
             with(bullet){
             direction = point_direction(x,y,mouse_x,mouse_y);
             }

@@ -74,6 +74,7 @@
             <string>if(image_alpha != 0){
     image_alpha = 0.7;
 }
+depth = -(room_height) - 1;
 </string>
           </argument>
         </arguments>
