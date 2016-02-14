@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = global.playername
+            <string>press = false;
+can_shoot = true;
+
+name = global.playername
 var type = network_socket_tcp;
 var ip = "101.165.16.163";
 var port = 8000;
@@ -83,6 +86,29 @@ grenades = 5;
 ammo = 30;
 hp = 5;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>can_shoot = true;
 </string>
           </argument>
         </arguments>
@@ -182,21 +208,52 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Shoot + send to server
-if ammo &gt; 0{
-    bullet = instance_create(x,y,obj_bullet);
-    with(bullet){
-    direction = point_direction(x,y,mouse_x,mouse_y);
-    }
-    
-    if socket != noone{
-        buffer_seek(buffer,buffer_seek_start,0);
-        
-        buffer_write(buffer,buffer_u8, 4); // 4
-        buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-        buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y        
-        
-        network_send_packet(socket,buffer, buffer_tell(buffer));
+            <string>if(press == false){
+    press = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(press){
+    if(can_shoot){
+        /// Shoot + send to server
+        if ammo &gt; 0{
+            bullet = instance_create(x,y,obj_bullet);
+            with(bullet){
+            direction = point_direction(x,y,mouse_x,mouse_y);
+            }
+            
+            if socket != noone{
+                buffer_seek(buffer,buffer_seek_start,0);
+                
+                buffer_write(buffer,buffer_u8, 4); // 4
+                buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+                buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y        
+                
+                network_send_packet(socket,buffer, buffer_tell(buffer));
+            }
+        }
+        can_shoot = false;
+        alarm[1] = 6;
     }
 }
 </string>
