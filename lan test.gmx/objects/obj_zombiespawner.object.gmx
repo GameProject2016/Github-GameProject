@@ -58,13 +58,22 @@ socket = network_create_socket(type);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_other){
+            <string>if obj_server.socket != noone{
     instance_create(x,y,obj_Zombie);
     alarm[0]  = room_speed/time;
     if time &lt; 30{
-        time += 0.001;
+        time += 0.01;
     }
     
+    if socket != noone{
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8, 7); // 1
+        buffer_write(buffer,buffer_u32, x);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+    }
 }
 </string>
           </argument>

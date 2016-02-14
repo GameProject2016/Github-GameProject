@@ -257,8 +257,6 @@ switch(type_event){
             
             instance_create(0,0,obj_other);//create the client object when connected
             instance_create(0,0,obj_god);//start wave countdown when connected
-            instance_create(0,0,obj_zombiespawner);//start spawning aombize
-            
             
             //send plaer sprite to client so not the same
             var size = 1024;
