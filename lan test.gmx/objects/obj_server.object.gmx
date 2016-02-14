@@ -3,7 +3,7 @@
   <spriteName>spr_server</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -211,7 +211,8 @@ if grenades &gt; 0{
             <kind>1</kind>
             <string>/// Shoot + send to server
 if ammo &gt; 0{
-    with(instance_create(x,y,obj_bullet)){
+    bullet = instance_create(x,y,obj_bullet);
+    with(bullet){
     direction = point_direction(x,y,mouse_x,mouse_y);
     }
     
@@ -347,7 +348,9 @@ network_destroy(server);
             <kind>1</kind>
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
-draw_set_colour(c_green);
+draw_set_colour(c_dkgray);
+draw_text(x - 1,y-82,string(name));
+draw_set_colour(c_ltgray);
 draw_text(x,y-80,string(name));
 draw_self();
 </string>

@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp = 3;
-spd = 6;
+            <string>hp = 2;
+spd = 3;
 
 </string>
           </argument>
