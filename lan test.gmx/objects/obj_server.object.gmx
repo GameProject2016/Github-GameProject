@@ -170,6 +170,22 @@ if socket != noone{
     }
 }
 depth = -y;
+
+
+
+//keep inside room
+if(obj_server.x &lt; obj_server.sprite_width / 2){
+    obj_server.x = obj_server.sprite_width / 2;
+}
+if(obj_server.y &lt; obj_server.sprite_height + 10){
+    obj_server.y = obj_server.sprite_height + 10;
+}
+if(obj_server.x &gt; (room_width - obj_server.sprite_width / 2)){
+    obj_server.x = room_width - obj_server.sprite_width / 2;
+}
+if(obj_server.y &gt; (room_height - obj_server.sprite_height + 10)){
+    obj_server.y = room_height - obj_server.sprite_height + 10;
+}
 </string>
           </argument>
         </arguments>
@@ -406,9 +422,9 @@ network_destroy(server);
             <string>draw_set_font(font_names);
 draw_set_halign(fa_center);
 draw_set_colour(c_dkgray);
-draw_text(x - 1,y-82,string(name));
+draw_text(x - 1,y-72 - sprite_height / 2,string(name));
 draw_set_colour(c_ltgray);
-draw_text(x,y-80,string(name));
+draw_text(x,y-70 - sprite_height/2,string(name));
 draw_self();
 </string>
           </argument>

@@ -2,7 +2,7 @@
 start_countdown(minutes) <- will start timer and set to number of min specified
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-instance_create(0,0,obj_countdown);
+instance_create(view_wview / 2,50,obj_countdown);
 
 with(obj_countdown){ 
 

@@ -26,32 +26,4 @@ if place_meeting(x,y+vsp,obj_Wall){
 }
 y+=vsp;
 
-//keep inside room
-if(instance_exists(obj_client)){
-    if(obj_client.x < obj_client.sprite_width / 2){
-        obj_client.x = obj_client.sprite_width / 2;
-    }
-    if(obj_client.y < obj_client.sprite_height / 2){
-        obj_client.y = obj_client.sprite_height / 2;
-    }
-    if(obj_client.x > (room_width - obj_client.sprite_width / 2)){
-        obj_client.x = room_width - obj_client.sprite_width / 2;
-    }
-    if(obj_client.y = (room_height - obj_client.sprite_height / 2)){
-        obj_client.y = room_height - obj_client.sprite_height / 2;
-    }
-}
-if(instance_exists(obj_server)){
-    if(obj_server.x < obj_server.sprite_width / 2){
-        obj_server.x = obj_server.sprite_width / 2;
-    }
-    if(obj_server.y < obj_server.sprite_height / 2){
-        obj_server.y = obj_server.sprite_height / 2;
-    }
-    if(obj_server.x > (room_width - obj_server.sprite_width / 2)){
-        obj_server.x = room_width - obj_server.sprite_width / 2;
-    }
-    if(obj_server.y = (room_height - obj_server.sprite_height / 2)){
-        obj_server.y = room_height - obj_server.sprite_height / 2;
-    }
-}
+

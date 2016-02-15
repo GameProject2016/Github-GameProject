@@ -52,7 +52,6 @@
             <string>if(distance_to_object(obj_Wall) == 0){
     instance_destroy();
 }
-
 </string>
           </argument>
         </arguments>

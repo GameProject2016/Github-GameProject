@@ -58,14 +58,14 @@ socket = network_create_socket(type);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_other){
+            <string>//if instance_exists(obj_other){
     instance_create(x,y,obj_Zombie);
     alarm[0]  = room_speed/time;
     if time &lt; 30{
         time += 0.001;
     }
     
-}
+//}
 </string>
           </argument>
         </arguments>
