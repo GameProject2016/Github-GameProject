@@ -31,7 +31,7 @@ switch(message_id){
     case 4: //create others bullet
         var mx = buffer_read(buffer, buffer_u32);
         var my = buffer_read(buffer,buffer_u32);
-        with(instance_create(obj_other.x,obj_other.y,obj_bullet)){
+        with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_bullet)){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
         }
         break;
@@ -58,7 +58,7 @@ switch(message_id){
     case 8: //create grenade
         var mx = buffer_read(buffer, buffer_u32); //zonbie x
         var my = buffer_read(buffer,buffer_u32); //zonbie y
-        with(instance_create(obj_other.x,obj_other.y,obj_grenade)){
+        with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_grenade)){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
         the_target = instance_create(mx,my,obj_target);
         the_target.image_alpha = 0;

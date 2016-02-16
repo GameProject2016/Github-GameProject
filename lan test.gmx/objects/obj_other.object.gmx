@@ -54,7 +54,7 @@ draw_set_halign(fa_center);
 
 draw_set_colour(c_dkgray);
 draw_text(x - 1,y-82,string(name));
-draw_set_colour(c_ltgray);
+draw_set_colour(c_white);
 draw_text(x,y-80,string(name));
 
 draw_self();
