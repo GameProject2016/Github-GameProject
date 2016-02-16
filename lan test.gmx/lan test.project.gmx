@@ -17,6 +17,7 @@
       <sprite>sprites\spr_other</sprite>
       <sprite>sprites\spr_Zombie</sprite>
       <sprite>sprites\spr_blood</sprite>
+      <sprite>sprites\spr_zombox</sprite>
     </sprites>
     <sprites name="weapons">
       <sprite>sprites\spr_bullet</sprite>
@@ -39,6 +40,7 @@
     <background>background\background1</background>
     <background>background\background2</background>
     <background>background\background3</background>
+    <background>background\background4</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -85,6 +87,7 @@
       <object>objects\obj_zombiespawner</object>
       <object>objects\obj_enemy_parent</object>
     </objects>
+    <object>objects\obj_zombox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>

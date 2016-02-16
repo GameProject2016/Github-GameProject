@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>speed = 8;
-
+depth = obj_server.depth - 59;
 slow = 0.05;
 </string>
           </argument>
@@ -54,23 +54,45 @@ slow = 0.05;
 speed -= slow;
 
 
-if distance_to_object(the_target) &lt;= 1 || speed&lt;0.1 {
+if speed&lt;0.1 {
 
     obj_camera.shaking = true;
     
-    instance_create(x,y,obj_explosion);
+    expl = instance_create(x,y,obj_explosion);
+    with(expl){
+        depth = other.depth;
+    }
     destroy(the_target);
-    
+
     instance_destroy();
 
 }
+
+
+
+if(place_meeting(x,y + 65,obj_Wall)){
+    if(depth &gt; other.depth - 3){
+    
+        obj_camera.shaking = true;
+    
+        expl = instance_create(x,y,obj_explosion);
+        with(expl){
+            depth = other.depth;
+        }
+        destroy(the_target);
+    
+        instance_destroy();
+        
+    }
+}
+
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Wall">
+    <event eventtype="4" ename="obj_target">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -88,9 +110,12 @@ if distance_to_object(the_target) &lt;= 1 || speed&lt;0.1 {
           <argument>
             <kind>1</kind>
             <string>obj_camera.shaking = true;
-
-instance_create(x,y,obj_explosion);
-destroy(the_target);
+ 
+expl = instance_create(x,y,obj_explosion);
+with(expl){
+    depth = other.depth;
+}
+destroy(other);
 
 instance_destroy();
 </string>

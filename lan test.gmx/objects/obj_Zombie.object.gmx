@@ -34,6 +34,7 @@ if(instance_exists(obj_server)){
     obj_server.zy = y;
     obj_server.zombie = true;
 }
+zombox = instance_create(x,y,obj_zombox);
 </string>
           </argument>
         </arguments>
@@ -58,102 +59,30 @@ if(instance_exists(obj_server)){
             <kind>1</kind>
             <string>if room == rm_Server {
     if distance_to_object(obj_server) &lt; distance_to_object(obj_other){
-        direction = point_direction(x,y, obj_server.x,obj_server.y);
+        mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall)
+
     }else{
-        direction = point_direction(x,y, obj_other.x,obj_other.y);
+        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall)
     }
     
 }else if room == rm_Client{
     if distance_to_object(obj_client) &lt; distance_to_object(obj_other){
-        direction = point_direction(x,y, obj_client.x,obj_client.y);
+        mp_potential_step_object(obj_client.x, obj_client.y, 1.5, obj_Wall)
     }
     else{
-        direction = point_direction(x,y, obj_other.x,obj_other.y);
+        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall)
     }
     
 }else if room==rm_offline{
-    direction = point_direction(x,y, obj_server.x,obj_server.y);
+    mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall)
 }
 
 
-// Tet if grenades  nearby and delete
 
+depth = -y;
 
-if(distance_to_object(obj_explosion) &lt; 40){
-    hp -= 4;
-    if(hp &lt;= 0){
-        instance_destroy();
-    }
-}
-if(distance_to_object(obj_explosion) &lt; 80){
-    hp -= 2;
-    if(hp &lt;= 0){
-        instance_destroy();
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>121</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_potential_step</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>x</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>y</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_bullet">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>destroy(other);
-
-if(hp != 0){
-    hp -= 2;
-}
-else{
-    instance_destroy();
-}
-
+zombox.x = x - 2;
+zombox.y = y - 63;
 </string>
           </argument>
         </arguments>

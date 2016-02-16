@@ -37,9 +37,9 @@ server = network_create_server(type,port,max_clients);
 socket = noone;
 
 var size = 1024;
-var type = buffer_fixed;
+var type2 = buffer_fixed;
 var allignment = 1;
-buffer = buffer_create(size, type, allignment);
+buffer = buffer_create(size, type2, allignment);
 
 // choose shirt colour
 image_speed = 0;
@@ -423,7 +423,7 @@ network_destroy(server);
 draw_set_halign(fa_center);
 draw_set_colour(c_dkgray);
 draw_text(x - 1,y-72 - sprite_height / 2,string(name));
-draw_set_colour(c_ltgray);
+draw_set_colour(c_white);
 draw_text(x,y-70 - sprite_height/2,string(name));
 draw_self();
 </string>
