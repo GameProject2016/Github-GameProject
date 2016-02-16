@@ -30,8 +30,7 @@ can_shoot = true;
 
 name = global.playername
 var type = network_socket_tcp;
-//var ip = "101.165.16.163";
-var ip = "124.158.20.206";
+var ip = "101.165.16.163";
 var port = 8000;
 socket = network_create_socket(type);
 connection = network_connect(socket,ip,port);
@@ -153,33 +152,17 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
 
 
 //keep inside room
-if(instance_exists(obj_client)){
-    if(obj_client.x &lt; obj_client.sprite_width / 2){
-        obj_client.x = obj_client.sprite_width / 2;
-    }
-    if(obj_client.y &lt; obj_client.sprite_height / 2){
-        obj_client.y = obj_client.sprite_height / 2;
-    }
-    if(obj_client.x &gt; (room_width - obj_client.sprite_width / 2)){
-        obj_client.x = room_width - obj_client.sprite_width / 2;
-    }
-    if(obj_client.y = (room_height - obj_client.sprite_height / 2)){
-        obj_client.y = room_height - obj_client.sprite_height / 2;
-    }
+if(obj_client.x &lt; obj_client.sprite_width / 2){
+    obj_client.x = obj_client.sprite_width / 2;
 }
-if(instance_exists(obj_server)){
-    if(obj_server.x &lt; obj_server.sprite_width / 2){
-        obj_server.x = obj_server.sprite_width / 2;
-    }
-    if(obj_server.y &lt; obj_server.sprite_height / 2){
-        obj_server.y = obj_server.sprite_height / 2;
-    }
-    if(obj_server.x &gt; (room_width - obj_server.sprite_width / 2)){
-        obj_server.x = room_width - obj_server.sprite_width / 2;
-    }
-    if(obj_server.y = (room_height - obj_server.sprite_height / 2)){
-        obj_server.y = room_height - obj_server.sprite_height / 2;
-    }
+if(obj_client.y &lt; obj_client.sprite_height + 10){
+    obj_client.y = obj_client.sprite_height + 10;
+}
+if(obj_client.x &gt; (room_width - obj_client.sprite_width / 2)){
+    obj_client.x = room_width - obj_client.sprite_width / 2;
+}
+if(obj_client.y &gt; (room_height - obj_client.sprite_height + 10)){
+    obj_client.y = room_height - obj_client.sprite_height + 10;
 }
 </string>
           </argument>

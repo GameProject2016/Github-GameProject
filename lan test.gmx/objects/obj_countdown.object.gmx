@@ -126,7 +126,7 @@ alarm[0] = 30;
           <argument>
             <kind>1</kind>
             <string>x =  view_wview / 2;
-y = 50;
+y = 18;
 </string>
           </argument>
         </arguments>
@@ -168,7 +168,7 @@ else {
 }
 
 // then draw the countdown text
-draw_text(view_wview / 2,y + 20,string(disp_min) + " : " + string(disp_sec));
+draw_text(view_wview / 2,18,string(disp_min) + " : " + string(disp_sec));
 </string>
           </argument>
         </arguments>
