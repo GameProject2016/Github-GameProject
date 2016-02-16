@@ -73,7 +73,6 @@
     <instance objName="obj_Wall" x="720" y="275" name="inst_AA7A66E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="720" y="245" name="inst_F4263180" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="720" y="215" name="inst_DF9042EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_countdown" x="855" y="160" name="inst_F50CB4EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombiespawner" x="1135" y="240" name="inst_1F318756" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

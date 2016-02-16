@@ -186,23 +186,27 @@ if(obj_client.y &gt; (room_height - obj_client.sprite_height + 10)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x+1,y-51,obj_grenade)){
-direction = point_direction(x+1,y-51,mouse_x,mouse_y);
-pointx = mouse_x;
-pointy = mouse_y;
-the_target = instance_create(pointx,pointy,obj_target);
+            <string>/// Throw grenade
+if grenades &gt; 0{
+    //Create grenade
+    with(instance_create(x+1,y-51,obj_grenade)){
+        direction = point_direction(x,y,mouse_x,mouse_y);
+        pointx = mouse_x;
+        pointy = mouse_y;
+        the_target = instance_create(pointx,pointy,obj_target);
+    }
+    
+    //Send grenade
+    if socket != noone{
+        buffer_seek(buffer,buffer_seek_start,0);
+        
+        buffer_write(buffer,buffer_u8, 8); // 4
+        buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
+        buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
+        
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+    }
 }
-
-
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 8); // 4
-buffer_write(buffer,buffer_u32, mouse_x);// 1,mouse_x
-buffer_write(buffer,buffer_u32,mouse_y); // 1,mouse_x,mouse_y
-
-
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
 </string>
           </argument>
         </arguments>
@@ -254,7 +258,7 @@ network_send_packet(socket,buffer, buffer_tell(buffer));
     if(can_shoot){
         /// Shoot + send to server
         if ammo &gt; 0{
-            bullet = instance_create(x,y,obj_bullet);
+            bullet = instance_create(x+1,y-51,obj_bullet);
             with(bullet){
             direction = point_direction(x,y,mouse_x,mouse_y);
             }

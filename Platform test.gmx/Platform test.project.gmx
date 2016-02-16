@@ -22,7 +22,6 @@
     <object>objects\obj_slime_particles</object>
     <object>objects\obj_slimer</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
