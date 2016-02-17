@@ -249,6 +249,7 @@ if keyboard_check_pressed(ord("Q")){
 if grenades &gt; 0{
     //Create grenade
     with(instance_create(x+1,y-51,obj_grenade)){
+        depth = obj_server.depth - 59;
         direction = point_direction(x,y,mouse_x,mouse_y);
         pointx = mouse_x;
         pointy = mouse_y;
@@ -320,6 +321,7 @@ if grenades &gt; 0{
             bullet = instance_create(x+1,y-51,obj_bullet);
             with(bullet){
             direction = point_direction(x,y,mouse_x,mouse_y);
+            depth = obj_server.depth - 59;
             }
             
             if socket != noone{
