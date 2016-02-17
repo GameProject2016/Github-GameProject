@@ -26,7 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>speed = 8;
+if instance_exists(obj_server){
 depth = obj_server.depth - 59;
+}
 slow = 0.05;
 </string>
           </argument>

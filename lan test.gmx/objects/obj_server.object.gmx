@@ -59,6 +59,8 @@ zombie = false;
 wx = 0;
 wy = 0;
 wall = false;
+
+
 </string>
           </argument>
         </arguments>
@@ -185,6 +187,41 @@ if(obj_server.x &gt; (room_width - obj_server.sprite_width / 2)){
 }
 if(obj_server.y &gt; (room_height - obj_server.sprite_height + 10)){
     obj_server.y = room_height - obj_server.sprite_height + 10;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///create wall
+if keyboard_check_pressed(ord("Q")){
+    instance_create(x+50,y,obj_Wall);
+    for(var i = -60; i &lt; 60; i++){
+        if position_meeting(x+i,y,obj_Wall){
+            if i &lt;0{
+                x -= i;
+            }else if i &gt;0{
+                x += i;
+            }else if i ==0{
+                x += 64;
+            }
+        }
+    }
 }
 </string>
           </argument>

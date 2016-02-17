@@ -56,7 +56,8 @@ socket = obj_client.socket;
 
 
 send = true;
-
+x= round(x/64)*64;
+y = round(y/64)*64;
 </string>
           </argument>
         </arguments>

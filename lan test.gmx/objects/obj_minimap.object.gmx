@@ -53,15 +53,17 @@ draw_rectangle(32,32,132,132,false);
 draw_set_colour(c_green);
 
 if instance_exists(obj_server){
-    draw_circle(32+(obj_server.x/room_width)*100,32+(obj_server.y/room_height)*100,10,false);
+    draw_circle(32+(obj_server.x/room_width)*100,32+(obj_server.y/room_height)*100,2,false);
 }
 
+draw_set_colour(c_blue);
 if instance_exists(obj_other){
-    draw_circle(32+(obj_other.x/room_width)*100,32+(obj_other.y/room_height)*100,10,false);
+    draw_circle(32+(obj_other.x/room_width)*100,32+(obj_other.y/room_height)*100,2,false);
 }
 
+draw_set_colour(c_green);
 if instance_exists(obj_client){
-    draw_circle(32+(obj_client.x/room_width)*100,32+(obj_client.y/room_height)*100,10,false);
+    draw_circle(32+(obj_client.x/room_width)*100,32+(obj_client.y/room_height)*100,2,false);
 }
 
 </string>
