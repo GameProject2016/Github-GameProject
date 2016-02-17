@@ -7,20 +7,31 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_player2</sprite>
     <sprite>sprites\spr_slime</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_slimed</sprite>
+    <sprite>sprites\spr_slimed2</sprite>
     <sprite>sprites\spr_slimed_edge</sprite>
+    <sprite>sprites\spr_slimed_edge2</sprite>
     <sprite>sprites\spr_slime_particle</sprite>
+    <sprite>sprites\spr_slime_particle2</sprite>
     <sprite>sprites\spr_slimer</sprite>
+    <sprite>sprites\spr_slimer2</sprite>
+    <sprite>sprites\spr_end</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_player2</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_slime_particles</object>
+    <object>objects\obj_slime_particles2</object>
     <object>objects\obj_slimer</object>
+    <object>objects\obj_slimer2</object>
+    <object>objects\obj_end</object>
+    <object>objects\obj_control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

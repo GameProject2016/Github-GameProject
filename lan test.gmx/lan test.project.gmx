@@ -81,6 +81,7 @@
       <object>objects\obj_god</object>
       <object>objects\obj_countdown</object>
       <object>objects\obj_camera</object>
+      <object>objects\obj_minimap</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_Zombie</object>
