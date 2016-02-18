@@ -4,7 +4,7 @@
   <width>5000</width>
   <height>5000</height>
   <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <hsnap>64</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
