@@ -185,8 +185,8 @@ if(obj_server.y &lt; obj_server.sprite_height + 10){
 if(obj_server.x &gt; (room_width - obj_server.sprite_width / 2)){
     obj_server.x = room_width - obj_server.sprite_width / 2;
 }
-if(obj_server.y &gt; (room_height - obj_server.sprite_height + 10)){
-    obj_server.y = room_height - obj_server.sprite_height + 10;
+if(obj_server.y &gt; (room_height - obj_server.sprite_height / 2 + 10)){
+    obj_server.y = room_height - obj_server.sprite_height / 2 + 10;
 }
 </string>
           </argument>
