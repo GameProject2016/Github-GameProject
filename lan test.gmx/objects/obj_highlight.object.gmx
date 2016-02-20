@@ -31,7 +31,7 @@
 x= round(mouse_x/64)*64;
 y = round(mouse_y/32)*32;
 
-if(distance_to_object(obj_server) &lt; 200){
+if(distance_to_object(obj_server) &lt; 300){
     image_index = 1;
 }
 else{
