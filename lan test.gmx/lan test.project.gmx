@@ -35,6 +35,7 @@
       <sprite>sprites\spr_controls</sprite>
     </sprites>
     <sprite>sprites\spr_turret</sprite>
+    <sprite>sprites\spr_highlight</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -92,6 +93,7 @@
     <object>objects\obj_zombox</object>
     <object>objects\obj_turret</object>
     <object>objects\par_enemy</object>
+    <object>objects\obj_highlight</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
