@@ -34,6 +34,7 @@
       <sprite>sprites\spr_join_btn</sprite>
       <sprite>sprites\spr_controls</sprite>
     </sprites>
+    <sprite>sprites\spr_turret</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -89,6 +90,8 @@
       <object>objects\obj_enemy_parent</object>
     </objects>
     <object>objects\obj_zombox</object>
+    <object>objects\obj_turret</object>
+    <object>objects\par_enemy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
