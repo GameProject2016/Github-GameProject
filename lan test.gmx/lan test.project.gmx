@@ -37,6 +37,7 @@
     </sprites>
     <sprite>sprites\spr_turret</sprite>
     <sprite>sprites\spr_highlight</sprite>
+    <sprite>sprites\spr_scroll</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

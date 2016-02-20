@@ -44,7 +44,7 @@ image_alpha = 0.7;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_chbox">
+    <event eventtype="4" ename="obj_zombox">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,7 +67,7 @@ image_alpha = 0.7;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_zombox">
+    <event eventtype="4" ename="obj_chbox">
       <action>
         <libid>1</libid>
         <id>603</id>

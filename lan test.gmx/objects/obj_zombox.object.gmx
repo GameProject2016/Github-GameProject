@@ -110,7 +110,7 @@ with(instance_place(x, y, obj_Zombie)){
           <argument>
             <kind>1</kind>
             <string>draw_set_colour(c_red);
-draw_circle(32+(x/room_width)*100,32+(y/room_height)*100,2,false);
+draw_circle(62+(x/room_width)*100,65+(y/room_height)*100,2,false);
 </string>
           </argument>
         </arguments>
