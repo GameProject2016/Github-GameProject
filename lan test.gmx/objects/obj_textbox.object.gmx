@@ -53,8 +53,13 @@ controller = "wasd";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = keyboard_string;
-global.playername = name; 
+            <string>if(string_length(keyboard_string) &gt; 12){
+    keyboard_string = string_copy(keyboard_string, 1, 12);
+}
+
+name = keyboard_string;
+
+global.playername = name;
 </string>
           </argument>
         </arguments>
