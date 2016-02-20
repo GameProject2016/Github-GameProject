@@ -14,6 +14,7 @@
     </sprites>
     <sprites name="Characters">
       <sprite>sprites\spr_server</sprite>
+      <sprite>sprites\spr_chbox</sprite>
       <sprite>sprites\spr_other</sprite>
       <sprite>sprites\spr_Zombie</sprite>
       <sprite>sprites\spr_blood</sprite>
@@ -67,6 +68,7 @@
       <object>objects\obj_grenade</object>
       <object>objects\obj_target</object>
       <object>objects\obj_explosion</object>
+      <object>objects\obj_chbox</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_select</object>
@@ -88,11 +90,9 @@
     <objects name="Enemies">
       <object>objects\obj_Zombie</object>
       <object>objects\obj_zombiespawner</object>
-      <object>objects\obj_enemy_parent</object>
     </objects>
     <object>objects\obj_zombox</object>
     <object>objects\obj_turret</object>
-    <object>objects\par_enemy</object>
     <object>objects\obj_highlight</object>
   </objects>
   <rooms name="rooms">

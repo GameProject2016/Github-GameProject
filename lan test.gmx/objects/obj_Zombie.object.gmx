@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_enemy_parent</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -59,22 +59,36 @@ zombox = instance_create(x,y,obj_zombox);
             <kind>1</kind>
             <string>if room == rm_Server {
     if distance_to_object(obj_server) &lt; distance_to_object(obj_other){
-        mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall)
-
+        mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall);
+        if(instance_place(x,y,obj_Zombie)){
+            mp_potential_step_object(obj_server.x, obj_server.y, 0, instance_place(x,y,obj_Zombie));
+        }
     }else{
-        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall)
+        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall);
+        if(instance_place(x,y,obj_Zombie)){
+            mp_potential_step_object(obj_other.x, obj_other.y, 0, instance_place(x,y,obj_Zombie));
+        }
     }
     
 }else if room == rm_Client{
     if distance_to_object(obj_client) &lt; distance_to_object(obj_other){
-        mp_potential_step_object(obj_client.x, obj_client.y, 1.5, obj_Wall)
+        mp_potential_step_object(obj_client.x, obj_client.y, 1.5, obj_Wall);
+        if(instance_place(x,y,obj_Zombie)){
+            mp_potential_step_object(obj_client.x, obj_client.y, 0, instance_place(x,y,obj_Zombie));
+        }
     }
     else{
-        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall)
+        mp_potential_step_object(obj_other.x, obj_other.y, 1.5, obj_Wall);
+        if(instance_place(x,y,obj_Zombie)){
+            mp_potential_step_object(obj_other.x, obj_other.y, 0, instance_place(x,y,obj_Zombie));
+        }
     }
     
 }else if room==rm_offline{
-    mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall)
+    mp_potential_step_object(obj_server.x, obj_server.y, 1.5, obj_Wall);
+    if(instance_place(x,y,obj_Zombie)){
+        mp_potential_step_object(obj_server.x, obj_server.y, 0, instance_place(x,y,obj_Zombie));
+    }
 }
 
 
@@ -83,6 +97,11 @@ depth = -y;
 
 zombox.x = x - 2;
 zombox.y = y - 63;
+
+if(instance_place(x + sprite_width/2 + 6, y, obj_Zombie)){
+    x -= 4;  
+    other.x += 4;
+}
 </string>
           </argument>
         </arguments>
