@@ -29,26 +29,26 @@
 
 x = 115;
 y = 115;
-
 draw_self();
+
 draw_set_colour(c_black);
-draw_set_alpha(0.2);
-draw_rectangle(62,65,162,165,false);
+draw_set_alpha(0.1);
+draw_rectangle(63,65,166,168,false);
 draw_set_alpha(1);
 draw_set_colour(c_green);
 
 if instance_exists(obj_server){
-    draw_circle(62+(obj_server.x/room_width)*100,65+(obj_server.y/room_height)*100,2,false);
+    draw_circle(63+(obj_server.x/room_width)*100,65+(obj_server.y/room_height)*100,2.5,false);
 }
 
 draw_set_colour(c_blue);
 if instance_exists(obj_other){
-    draw_circle(62+(obj_other.x/room_width)*100,65+(obj_other.y/room_height)*100,2,false);
+    draw_circle(63+(obj_other.x/room_width)*100,65+(obj_other.y/room_height)*100,2.5,false);
 }
 
 draw_set_colour(c_green);
 if instance_exists(obj_client){
-    draw_circle(62+(obj_client.x/room_width)*100,65+(obj_client.y/room_height)*100,2,false);
+    draw_circle(63+(obj_client.x/room_width)*100,65+(obj_client.y/room_height)*100,2,false);
 }
 
 </string>

@@ -78,4 +78,24 @@ switch(message_id){
         turret.y=ty;
         break;
         
+    case 11: //create turret in client
+        var bg = buffer_read(buffer, buffer_u32); //bg
+        switch(bg){
+            case 1:
+                background_index[0] = background4;
+                break;
+            case 2:
+                background_index[0] = background5;
+                break;
+            case 3:
+                background_index[0] = background6;
+                break;
+            case 4:
+                background_index[0] = background7;
+                break;
+            case 5:
+                background_index[0] = background8;
+                break;
+            }
+        break;
 }

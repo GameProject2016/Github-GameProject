@@ -40,11 +40,15 @@
     <sprite>sprites\spr_scroll</sprite>
   </sprites>
   <backgrounds name="background">
+    <background>background\background8</background>
     <background>background\background0</background>
     <background>background\background1</background>
     <background>background\background2</background>
     <background>background\background3</background>
     <background>background\background4</background>
+    <background>background\background5</background>
+    <background>background\background6</background>
+    <background>background\background7</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -91,6 +95,7 @@
     <objects name="Enemies">
       <object>objects\obj_Zombie</object>
       <object>objects\obj_zombiespawner</object>
+      <object>objects\par_enemy</object>
     </objects>
     <object>objects\obj_zombox</object>
     <object>objects\obj_turret</object>

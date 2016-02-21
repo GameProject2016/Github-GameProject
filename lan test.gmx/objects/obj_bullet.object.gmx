@@ -54,6 +54,9 @@
         instance_destroy();
     }
 }
+else{
+    depth -= y;
+}
 </string>
           </argument>
         </arguments>
