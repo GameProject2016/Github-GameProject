@@ -85,10 +85,10 @@ canshoot = true;
         if canshoot
         {
             image_angle = point_direction(x, y, target.x, target.y); //point at the target
-            with (instance_create(x,y,obj_bullet)) {
+            with (bullet = instance_create(x,y,obj_bullet)) {
                 direction = other.image_angle; //set the bullet to point in the right direction too
-                creator = obj_turret.creator;
             }
+            bullet.creator = creator;
             canshoot=false;
             alarm[0] = room_speed; //this alarm will control shoot speed
         }
