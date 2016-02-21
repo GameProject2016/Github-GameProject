@@ -100,6 +100,7 @@
     <object>objects\obj_zombox</object>
     <object>objects\obj_turret</object>
     <object>objects\obj_highlight</object>
+    <object>objects\obj_Variables</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>
