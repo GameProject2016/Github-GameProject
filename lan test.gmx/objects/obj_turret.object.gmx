@@ -111,10 +111,22 @@ if(!base){
 }
 
 if(creator == 0){
-    base.image_index = obj_server.image_index;
+    if(room == rm_Server){
+        base.image_index = obj_server.image_index;
+    }
+    else{
+        base.image_index = obj_other.image_index;
+    }
 }
 else if(creator == 1){
-    base.image_index = obj_client.image_index;
+    if(room == rm_Client){
+        base.image_index = obj_client.image_index;
+    }
+    else{
+        if(instance_exists(obj_other)){
+            base.image_index = obj_other.image_index;
+        }
+    }
 }
 </string>
           </argument>
