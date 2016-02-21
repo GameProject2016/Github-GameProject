@@ -73,9 +73,8 @@ switch(message_id){
     case 10: //create turret in client
         var tx = buffer_read(buffer, buffer_u32); //wall x
         var ty = buffer_read(buffer,buffer_u32); //wall y
-        turret = instance_create(0,0,obj_turret);
-        turret.x=tx;
-        turret.y=ty;
+        turret = instance_create(tx,ty,obj_turret);
+        
         break;
         
     case 11: //create turret in client
