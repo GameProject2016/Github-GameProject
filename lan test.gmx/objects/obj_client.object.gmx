@@ -86,6 +86,10 @@ grenades = 5;
 ammo = 30;
 hp = 5;
 
+
+chbox = instance_create(x,y,obj_chbox);
+
+
 </string>
           </argument>
         </arguments>
@@ -231,6 +235,13 @@ buffer_write(buffer,buffer_u32,y); // 1,mouse_x,mouse_y
 
 network_send_packet(socket,buffer, buffer_tell(buffer));
 
+//send points
+buffer_seek(buffer,buffer_seek_start,0);
+
+buffer_write(buffer,buffer_u8, 12); // 1
+buffer_write(buffer,buffer_u32, global.points);// 1,mouse_x
+
+network_send_packet(socket,buffer, buffer_tell(buffer));
 
 depth = -y;
 
@@ -247,6 +258,10 @@ if(obj_client.x &gt; (room_width - obj_client.sprite_width / 2)){
 if(obj_client.y &gt; (room_height - obj_client.sprite_height + 10)){
     obj_client.y = room_height - obj_client.sprite_height + 10;
 }
+
+
+chbox.x = x - 2;
+chbox.y = y - 63;
 </string>
           </argument>
         </arguments>

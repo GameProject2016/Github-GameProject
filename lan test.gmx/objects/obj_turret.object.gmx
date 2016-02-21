@@ -3,7 +3,7 @@
   <spriteName>spr_turret</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,8 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>target = noone; //target variable, set to noone at first...
-max_dist = 200; //Maximum range of the turret
+max_dist = 300; //Maximum range of the turret
 canshoot = true; //This is to control shooting
+
+depth = -(y + 50);
+base = instance_create(x,y + 50, obj_turretbase);
+base.depth = depth;
 </string>
           </argument>
         </arguments>
@@ -96,6 +100,7 @@ canshoot = true;
         }
     }
 }
+depth = -(y + 50);
 </string>
           </argument>
         </arguments>
