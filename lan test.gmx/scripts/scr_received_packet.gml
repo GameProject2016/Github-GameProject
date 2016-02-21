@@ -33,7 +33,6 @@ switch(message_id){
         var my = buffer_read(buffer,buffer_u32);
         with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_bullet)){
         direction = point_direction(obj_other.x,obj_other.y,mx,my);
-        creator = 1;
         }
         break;
         

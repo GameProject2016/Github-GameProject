@@ -51,8 +51,6 @@ if(distance_to_object(obj_explosion) &lt; 80){
         }
     }
 }
-
-zombie = instance_place(x, y, obj_Zombie);
 </string>
           </argument>
         </arguments>
@@ -75,7 +73,7 @@ zombie = instance_place(x, y, obj_Zombie);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>destroy(other);
 
 with(instance_place(x, y, obj_Zombie)){
     if(hp != 0){
@@ -86,11 +84,22 @@ with(instance_place(x, y, obj_Zombie)){
             instance_destroy();
             
         }
-        
+        if creator = 0{
+            global.points += 5;
+        }else if creator = 1{ //server's turret in client
+            if socket != noone{
+                buffer_seek(buffer,buffer_seek_start,0);
+                            
+                buffer_write(buffer,buffer_u8, 13); // 4
+                buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                            
+                network_send_packet(socket,buffer, buffer_tell(buffer));
+            }
+        }
         instance_destroy();
     }
 }
-destroy(other);
+
 </string>
           </argument>
         </arguments>
