@@ -101,6 +101,11 @@ canshoot = true;
     }
 }
 depth = -(y + 50);
+
+if(!instance_place(x,y + 50, obj_turretbase)){
+    base = instance_create(x,y + 50, obj_turretbase);
+}
+
 </string>
           </argument>
         </arguments>
