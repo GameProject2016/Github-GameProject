@@ -8,6 +8,28 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -29,7 +51,10 @@
 
 x = 115;
 y = 115;
+
 draw_self();
+x = 6000;
+y=6000;
 
 draw_set_colour(c_black);
 draw_set_alpha(0.1);
@@ -38,18 +63,25 @@ draw_set_alpha(1);
 draw_set_colour(c_green);
 
 if instance_exists(obj_server){
+    
     draw_circle(63+(obj_server.x/room_width)*100,65+(obj_server.y/room_height)*100,2.5,false);
+   
 }
 
 draw_set_colour(c_blue);
 if instance_exists(obj_other){
+ 
     draw_circle(63+(obj_other.x/room_width)*100,65+(obj_other.y/room_height)*100,2.5,false);
+
 }
 
 draw_set_colour(c_green);
 if instance_exists(obj_client){
+
     draw_circle(63+(obj_client.x/room_width)*100,65+(obj_client.y/room_height)*100,2,false);
+   
 }
+
 
 </string>
           </argument>
