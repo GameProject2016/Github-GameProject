@@ -74,7 +74,7 @@ switch(message_id){
         var tx = buffer_read(buffer, buffer_u32); //wall x
         var ty = buffer_read(buffer,buffer_u32); //wall y
         turret = instance_create(tx,ty,obj_turret);
-        
+        turret.creator = 1;
         break;
         
     case 11: //create turret in client
@@ -101,6 +101,11 @@ switch(message_id){
     case 12:
         var point = buffer_read(buffer, buffer_u32); //bg
         global.otherpoints = point;
+        break;   
+        
+    case 13:
+        var point = buffer_read(buffer, buffer_u32); //bg
+        global.points += point;
         break;      
         
 }

@@ -82,6 +82,19 @@ with(instance_place(x, y, obj_Zombie)){
     else{
         with(zombox){
             instance_destroy();
+            
+        }
+        if creator = 0{
+            global.points += 5;
+        }else if creator = 1{ //server's turret in client
+            if socket != noone{
+                buffer_seek(buffer,buffer_seek_start,0);
+                            
+                buffer_write(buffer,buffer_u8, 13); // 4
+                buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                            
+                network_send_packet(socket,buffer, buffer_tell(buffer));
+            }
         }
         instance_destroy();
     }

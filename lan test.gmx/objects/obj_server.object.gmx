@@ -267,7 +267,8 @@ if(keyboard_check_released(vk_space)){
 // turrent
 if keyboard_check_pressed(ord("E")){
     if global.points &gt;= 50{
-        instance_create(x,y,obj_turret);
+        turret = instance_create(x,y,obj_turret);
+        turret.creator = 0;
         global.points -= 50;
         //send
         if socket != noone{

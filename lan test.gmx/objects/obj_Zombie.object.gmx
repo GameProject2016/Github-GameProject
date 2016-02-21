@@ -57,8 +57,7 @@ zombox = instance_create(x,y,obj_zombox);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.points += 5;
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
