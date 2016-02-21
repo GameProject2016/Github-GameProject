@@ -85,7 +85,8 @@ canshoot = true;
         if canshoot
         {
             image_angle = point_direction(x, y, target.x, target.y); //point at the target
-            with (bullet = instance_create(x,y,obj_bullet)) {
+            bullet = instance_create(x,y,obj_bullet);
+            with (bullet) {
                 direction = other.image_angle; //set the bullet to point in the right direction too
             }
             bullet.creator = creator;
@@ -109,6 +110,12 @@ if(!base){
     base = instance_create(x,y + 50, obj_turretbase);
 }
 
+if(creator == 0){
+    base.image_index = obj_server.image_index;
+}
+else if(creator == 1){
+    base.image_index = obj_client.image_index;
+}
 </string>
           </argument>
         </arguments>

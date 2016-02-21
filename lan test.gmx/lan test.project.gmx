@@ -73,8 +73,8 @@
       <object>objects\obj_bullet</object>
       <object>objects\obj_grenade</object>
       <object>objects\obj_target</object>
-      <object>objects\obj_explosion</object>
       <object>objects\obj_chbox</object>
+      <object>objects\obj_explosion</object>
       <object>objects\obj_turret</object>
     </objects>
     <objects name="Menu">
