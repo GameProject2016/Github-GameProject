@@ -217,7 +217,7 @@ chbox.y = y - 63;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Wall and turrent create
+            <string>/// Wall and turret create
 // wall
 /*if keyboard_check_pressed(ord("Q")){
     instance_create(x+50,y,obj_Wall);
@@ -236,13 +236,16 @@ chbox.y = y - 63;
 */
 if(keyboard_check(vk_space)){
     if global.points &gt;= 25{
+        
         if(!instance_exists(obj_highlight)){
             instance_create(mouse_x,mouse_y,obj_highlight);
         }
         if(mouse_check_button(mb_left)){
             if(obj_highlight.image_index != 0){
                 instance_create(mouse_x,mouse_y,obj_Wall);
+                global.walls += 1;
                 global.points -= 25;
+                global.walls -= 1;
             }
         }
     }

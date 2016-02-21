@@ -66,8 +66,8 @@ switch(message_id){
         break;
         
     case 9: //recieve and set others name
-        var othername = buffer_read(buffer,buffer_string); //name
-        obj_other.name = othername;
+        global.othername = buffer_read(buffer,buffer_string); //name
+        obj_other.name = global.othername;
         break;
         
     case 10: //create turret in client
@@ -98,4 +98,10 @@ switch(message_id){
                 break;
             }
         break;
+        
+    case 12:
+        var point = buffer_read(buffer, buffer_u32); //bg
+        global.otherpoints = point;
+        break;      
+        
 }
