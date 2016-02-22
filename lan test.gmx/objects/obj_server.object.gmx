@@ -175,15 +175,6 @@ if socket != noone{
         wall = false;
     }
 }
-
-//send points
-buffer_seek(buffer,buffer_seek_start,0);
-
-buffer_write(buffer,buffer_u8, 12); // 1
-buffer_write(buffer,buffer_u32, global.points);// 1,mouse_x
-
-network_send_packet(socket,buffer, buffer_tell(buffer));
-
 depth = -y;
 
 
@@ -442,9 +433,7 @@ switch(type_event){
             socket = async_load[? "socket"];
             
             instance_create(0,0,obj_other);//create the client object when connected
-            if(!instance_exists(obj_god)){
-                instance_create(0,0,obj_god);//start wave countdown when connected
-            }
+            instance_create(0,0,obj_god);//start wave countdown when connected
             instance_create(0,0,obj_zombiespawner);//start spawning aombize
             
             
