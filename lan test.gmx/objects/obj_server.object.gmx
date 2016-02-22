@@ -384,6 +384,7 @@ if grenades &gt; 0{
                 with(bullet){
                 direction = point_direction(x,y,mouse_x,mouse_y);
                 depth = obj_server.depth - 59;
+                creator = 0;
                 }
                 
                 if socket != noone{
