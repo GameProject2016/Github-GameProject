@@ -99,12 +99,14 @@ if(distance_to_object(obj_explosion) &lt; 80){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-    if other.creator == 0{
+            <string>if other.creator == 0{
+    if(instance_exists(zombe)){
         if(zombe.hp != 2){
             global.points += 5;
         }
-    }else{
+    }
+}else{
+    if(instance_exists(zombe)){
         if(zombe.hp != 2){
             if socket != noone{
                 buffer_seek(buffer,buffer_seek_start,0);
@@ -116,7 +118,7 @@ if(distance_to_object(obj_explosion) &lt; 80){
             }
         }
     }
-
+}
 if(zombe.hp != 0){
     zombe.hp -= 2;
 }
