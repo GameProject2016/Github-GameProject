@@ -69,7 +69,8 @@ socket = network_create_socket(type);
     alarm[0] = spawn_speed * 30;
     if spawn_speed &gt; 0.75 {
         spawn_speed -= 0.005;
-    } 
+    }
+    
 //}
 </string>
           </argument>
