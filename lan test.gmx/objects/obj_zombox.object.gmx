@@ -73,33 +73,30 @@ if(distance_to_object(obj_explosion) &lt; 80){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>destroy(other);
-
-with(instance_place(x, y, obj_Zombie)){
-    if(hp != 0){
-        hp -= 2;
-    }
-    else{
-        with(zombox){
-            instance_destroy();
-            
+            <string>if(other.creator == 0){
+    zombe = instance_place(x,y,obj_Zombie);
+    if(instance_exists(zombe)){
+        if(zombe.hp != 0){
+            zombe.hp -= 2;
         }
-        if creator = 0{
+        else{
             global.points += 5;
-        }else if creator = 1{ //server's turret in client
-            if socket != noone{
-                buffer_seek(buffer,buffer_seek_start,0);
-                            
-                buffer_write(buffer,buffer_u8, 13); // 4
-                buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
-                            
-                network_send_packet(socket,buffer, buffer_tell(buffer));
-            }
+            destroy(zombe);
+            instance_destroy();
         }
-        instance_destroy();
     }
 }
-
+else if creator = 1{ //server's turret in client
+    if socket != noone{
+        buffer_seek(buffer,buffer_seek_start,0);
+                    
+        buffer_write(buffer,buffer_u8, 13); // 4
+        buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                    
+        network_send_packet(socket,buffer, buffer_tell(buffer));
+    }
+}
+destroy(other);
 </string>
           </argument>
         </arguments>

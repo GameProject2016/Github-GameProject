@@ -393,8 +393,9 @@ if grenades &gt; 0{
                 with(bullet){
                 direction = point_direction(x,y,mouse_x,mouse_y);
                 depth = obj_server.depth - 59;
+                var creator;
                 }
-                
+                bullet.creator = 0;
                 if socket != noone{
                     buffer_seek(buffer,buffer_seek_start,0);
                     
@@ -567,6 +568,7 @@ draw_set_halign(fa_center);
 draw_set_colour(c_dkgray);
 draw_text(x - 1,y-72 - sprite_height / 2,string(name));
 draw_set_colour(c_white);
+
 draw_text(x,y-70 - sprite_height/2,string(name));
 draw_self();
 </string>

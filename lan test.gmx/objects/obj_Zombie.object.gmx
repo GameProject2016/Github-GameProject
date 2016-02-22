@@ -117,8 +117,12 @@ zombox = instance_create(x,y,obj_zombox);
 
 depth = -y;
 
-zombox.x = x - 2;
-zombox.y = y - 63;
+if(instance_exists(zombox)){
+
+    zombox.x = x - 2;
+    zombox.y = y - 63;
+
+}
 
 if(instance_place(x + sprite_width/2 + 6, y, obj_Zombie)){
     x -= 4;  
