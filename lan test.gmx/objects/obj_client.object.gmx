@@ -359,10 +359,11 @@ if grenades &gt; 0{
         /// Shoot + send to server
         if ammo &gt; 0{
             bullet = instance_create(x+1,y-51,obj_bullet);
-            with(bullet){
-            direction = point_direction(x,y,mouse_x,mouse_y);
-            depth = obj_client.depth - 59;
-            }
+                with(bullet){
+                direction = point_direction(x,y,mouse_x,mouse_y);
+                depth = obj_server.depth - 59;
+                creator = 0;
+                }
             
             if socket != noone{
                 buffer_seek(buffer,buffer_seek_start,0);

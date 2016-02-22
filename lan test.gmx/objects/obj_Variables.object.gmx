@@ -55,7 +55,7 @@ global.othername = "";
             <kind>1</kind>
             <string>///draw points
 draw_set_font(font_names);
-
+draw_set_colour(c_white);
 draw_text(64,225,string(global.playername) + ": "+string(global.points));
 if instance_exists(obj_other){
     draw_text(64,250,string(global.othername) + ": "+string(global.otherpoints));
