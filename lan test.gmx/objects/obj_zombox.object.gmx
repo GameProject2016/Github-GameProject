@@ -51,12 +51,12 @@ instance_destroy();
             <kind>1</kind>
             <string>image_alpha = 0;
 
-zombe = instance_place(x, y, obj_Zombie);
+zombie = instance_place(x, y, obj_Zombie);
 
 // Set if grenades  nearby and delete
 
 if(distance_to_object(obj_explosion) &lt; 40){
-    with(instance_place(x, y, obj_Zombie)){
+    with(zombie){
         hp -= 4;
         if(hp &lt;= 0){
             with(zombox){
@@ -67,7 +67,7 @@ if(distance_to_object(obj_explosion) &lt; 40){
     }
 }
 if(distance_to_object(obj_explosion) &lt; 80){
-    with(instance_place(x, y, obj_Zombie)){
+    with(zombie){
         hp -= 2;
         if(hp &lt;= 0){
             with(zombox){
@@ -100,14 +100,14 @@ if(distance_to_object(obj_explosion) &lt; 80){
           <argument>
             <kind>1</kind>
             <string>if other.creator == 0{
-    if(instance_exists(zombe)){
-        if(zombe.hp != 2){
+    if(instance_exists(zombie)){
+        if(zombie.hp != 2){
             global.points += 5;
         }
     }
 }else{
-    if(instance_exists(zombe)){
-        if(zombe.hp != 2){
+    if(instance_exists(zombie)){
+        if(zombie.hp != 2){
             if socket != noone{
                 buffer_seek(buffer,buffer_seek_start,0);
                             
@@ -119,11 +119,11 @@ if(distance_to_object(obj_explosion) &lt; 80){
         }
     }
 }
-if(zombe.hp != 0){
-    zombe.hp -= 2;
+if(zombie.hp != 0){
+    zombie.hp -= 2;
 }
 else{
-    destroy(zombe);
+    destroy(zombie);
     instance_destroy();
 }
 destroy(other);
