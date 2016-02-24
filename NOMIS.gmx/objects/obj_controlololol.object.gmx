@@ -29,13 +29,22 @@
 repeat(20){
     randomize();
     colour = irandom(3);
-    line[create] = create;
+    global.line[create] = 0;
+    create ++;
+}
+create = 0;
+repeat(20){
+    randomize();
+    
+    global.computer[create] = 0;
     create ++;
 }
 
 global.turn = false;
 global.count = 0;
-alarm[0] = room_speed;
+global.computercount = 0;
+global.showing = true;
+alarm[0] = room_speed/2;
 </string>
           </argument>
         </arguments>
@@ -58,7 +67,18 @@ alarm[0] = room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>switch(global.computercount){
+    case global.computercount:
+        randomize();
+        colour = irandom(3);
+        global.computer[global.computercount] = colour+1;
+        global.computercount ++;
+        
+        break;
+}
+
+alarm[0] = room_speed/2;
+</string>
           </argument>
         </arguments>
       </action>
@@ -80,7 +100,34 @@ alarm[0] = room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_text(0,0,string(global.line[0])+string(global.line[1])+string(global.line[2])+string(global.line[3])+string(global.line[4])+string(global.line[5])+string(global.line[6])+string(global.line[8])+string(global.line[9])+string(global.line[10]));
+draw_text(0,86,string(global.computer[0])+string(global.computer[1])+string(global.computer[2])+string(global.computer[3])+string(global.computer[4])+string(global.computer[5])+string(global.computer[6])+string(global.computer[8])+string(global.computer[9])+string(global.computer[10]));
+</string>
           </argument>
         </arguments>
       </action>
