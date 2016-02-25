@@ -8,7 +8,15 @@
   <sprites name="sprites">
     <sprites name="Blocks">
       <sprites name="Background">
-        <sprit
+        <sprite>sprites\sCaveBG</sprite>
+        <sprite>sprites\sCaveBG1</sprite>
+        <sprite>sprites\sCaveBG2</sprite>
+        <sprite>sprites\sCaveBGEntrance</sprite>
+        <sprite>sprites\sEntrance</sprite>
+        <sprite>sprites\sExit</sprite>
+        <sprite>sprites\sGoldDoor</sprite>
+        <sprite>sprites\sMsgSign</sprite>
+      </sprites>
       <sprites name="Altars">
         <sprite>sprites\sSacAltarRight</sprite>
         <sprite>sprites\sSacAltarLeft</sprite>
@@ -28,7 +36,16 @@
         <sprite>sprites\sGrave2</sprite>
         <sprite>sprites\sGrave3</sprite>
         <sprite>sprites\sGrave4</sprite>
-        <sprg</sprite>
+        <sprite>sprites\sGrave5</sprite>
+        <sprite>sprites\sGrave6</sprite>
+        <sprite>sprites\sGraveAsh</sprite>
+      </sprites>
+      <sprites name="Mines">
+        <sprite>sprites\sBlock</sprite>
+        <sprite>sprites\sBrick</sprite>
+        <sprite>sprites\sBrickDown</sprite>
+        <sprite>sprites\sBrickGold</sprite>
+        <sprite>sprites\sBrickGoldBig</sprite>
         <sprite>sprites\sBrick2</sprite>
         <sprite>sprites\sCaveUp</sprite>
         <sprite>sprites\sCaveSmooth</sprite>
@@ -36,7 +53,9 @@
         <sprite>sprites\sCaveTop</sprite>
         <sprite>sprites\sCaveTop2</sprite>
         <sprite>sprites\sCaveBottom</sprite>
-        <sprite>tes\sCaveLeft</sprite>
+        <sprite>sprites\sCaveBottomL</sprite>
+        <sprite>sprites\sCaveBottomR</sprite>
+        <sprite>sprites\sCaveLeft</sprite>
         <sprite>sprites\sCaveRight</sprite>
       </sprites>
       <sprites name="Lush">
@@ -284,7 +303,33 @@
         <sprite>sprites\sCaravan1</sprite>
         <sprite>sprites\sCaravan2</sprite>
         <sprite>sprites\sCaravan3</sprite>
-
+        <sprite>sprites\sCavemanLeft</sprite>
+        <sprite>sprites\sCavemanRunLeft</sprite>
+        <sprite>sprites\sCavemanDieLR</sprite>
+        <sprite>sprites\sCavemanDieLL</sprite>
+        <sprite>sprites\sCavemanBounceL</sprite>
+        <sprite>sprites\sCavemanFallL</sprite>
+        <sprite>sprites\sCavemanStunL</sprite>
+        <sprite>sprites\sCavemanDeadL</sprite>
+        <sprite>sprites\sCavemanWorshipR</sprite>
+        <sprite>sprites\sCaveManWorshipL</sprite>
+        <sprite>sprites\sCavemanHeldL</sprite>
+        <sprite>sprites\sCavemanDHeldL</sprite>
+        <sprite>sprites\sFrozenCaveman</sprite>
+      </sprites>
+      <sprites name="Yeti">
+        <sprite>sprites\sYetiThrowL</sprite>
+        <sprite>sprites\sYetiLeft</sprite>
+        <sprite>sprites\sYetiRunLeft</sprite>
+        <sprite>sprites\sYetiDieLR</sprite>
+        <sprite>sprites\sYetiDieLL</sprite>
+        <sprite>sprites\sYetiBounceL</sprite>
+        <sprite>sprites\sYetiFallL</sprite>
+        <sprite>sprites\sYetiStunL</sprite>
+        <sprite>sprites\sYetiDeadL</sprite>
+        <sprite>sprites\sYetiHeldL</sprite>
+        <sprite>sprites\sYetiDHeldL</sprite>
+      </sprites>
       <sprites name="Hawkman">
         <sprite>sprites\sHawkThrowL</sprite>
         <sprite>sprites\sHawkLeft</sprite>
@@ -1022,10 +1067,14 @@
       <script>scripts\scrWriteStats.gml</script>
       <script>scripts\scrReadStats.gml</script>
     </scripts>
-    <scrits name=rso_Init.gml</script>
+    <scripts name="supersound">
+      <script>scripts\SS_Init.gml</script>
       <script>scripts\SS_Unload.gml</script>
       <script>scripts\SS_LoadSound.gml</script>
-      <script>SS_SetSoundFreq.gml</script>
+      <script>scripts\SS_PlaySound.gml</script>
+      <script>scripts\SS_LoopSound.gml</script>
+      <script>scripts\SS_StopSound.gml</script>
+      <script>scripts\SS_SetSoundFreq.gml</script>
       <script>scripts\SS_SetSoundPan.gml</script>
       <script>scripts\SS_SetSoundVol.gml</script>
       <script>scripts\SS_FreeSound.gml</script>
@@ -1567,7 +1616,10 @@
     <room>rooms\rTransition1x</room>
     <room>rooms\rTransition2</room>
     <room>rooms\rTransition2x</room>
-    <room>rorEnd</room>
+    <room>rooms\rTransition3</room>
+    <room>rooms\rTransition3x</room>
+    <room>rooms\rTransition4</room>
+    <room>rooms\rEnd</room>
     <room>rooms\rEnd2</room>
     <room>rooms\rEnd3</room>
     <room>rooms\rEndCustom</room>
@@ -1575,8 +1627,14 @@
     <room>rooms\rJoyConfig</room>
     <rooms name="supersound">
       <room>rooms\room0</room>
- 
+    </rooms>
+  </rooms>
+  <help>
+    <rtf>help.rtf</rtf>
+  </help>
   <TutorialState>
     <IsTutorial>0</IsTutorial>
-    <Tutorie>0</TutorialPage>
+    <TutorialName></TutorialName>
+    <TutorialPage>0</TutorialPage>
   </TutorialState>
+</assets>
