@@ -112,7 +112,6 @@ y = round(y/32)*32;
 
 x= round(x/64)*64;
 y = round(y/32)*32;
-
 </string>
           </argument>
         </arguments>

@@ -240,7 +240,7 @@ if(keyboard_check(vk_space)){
         if(!instance_exists(obj_highlight)){
             instance_create(mouse_x,mouse_y,obj_highlight);
         }
-        if(mouse_check_button(mb_left)){
+        if(mouse_check_button_pressed(mb_left)){
             if(obj_highlight.image_index != 0){
                 instance_create(mouse_x,mouse_y,obj_Wall);
                 global.walls += 1;
