@@ -315,6 +315,7 @@ if grenades &gt; 0{
         pointx = mouse_x;
         pointy = mouse_y;
         the_target = instance_create(pointx,pointy,obj_target);
+        creator = 0;
     }
     
     //Send grenade

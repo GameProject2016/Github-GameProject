@@ -95,32 +95,62 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
+            <string>var expl;
+image_alpha = 0;
 
 zombie = instance_nearest(x,y + sprite_width / 2 - 6,obj_Zombie);
 // Set if grenades  nearby and delete
-
-if(distance_to_object(obj_explosion) &lt; 40){
-    with(zombie){
-        hp -= 4;
-        if(hp &lt;= 0){
-            with(zombox){
+if(instance_exists(obj_explosion)){
+    if(distance_to_object(obj_explosion) &lt; 40){
+        if(instance_nearest(x,y,obj_explosion).creator == 0){
+            if(instance_exists(zombie)){
+                zombie.hp -= 4;
+                if(zombie.hp &lt;= 0){
+                    global.points += 5;
+                    instance_destroy();
+                }
+            }
+        }
+        else{
+            with(zombie){
+                hp -= 4;
+                if(hp &lt;= 0){
+                    if(global.socket != noone){
+                        buffer_seek(buffer,buffer_seek_start,0);
+                        
+                        buffer_write(buffer,buffer_u8, 31);
+                        buffer_write(buffer,buffer_u32, 5);
+                        
+                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    }
+                }
+            }
+        }
+    }
+else if(distance_to_object(obj_explosion) &lt; 90){
+    if(instance_nearest(x,y,obj_explosion).creator == 0){
+        if(instance_exists(zombie)){
+            zombie.hp -= 2;
+            if(zombie.hp &lt;= 0){
+                global.points += 5;
                 instance_destroy();
             }
-            instance_destroy();
+        }
+    }
+    else{
+        with(zombie){
+            hp -= 2;
+            if(hp &lt;= 0){
+                if(global.socket != noone){
+                    buffer_seek(buffer,buffer_seek_start,0);
+                    buffer_write(buffer,buffer_u8, 31);
+                    buffer_write(buffer,buffer_u32,5);
+                    network_send_packet(socket,buffer, buffer_tell(buffer));
+                }
+            }
         }
     }
 }
-if(distance_to_object(obj_explosion) &lt; 80){
-    with(zombie){
-        hp -= 2;
-        if(hp &lt;= 0){
-            with(zombox){
-                instance_destroy();
-            }
-            instance_destroy();
-        }
-    }
 }
 </string>
           </argument>
