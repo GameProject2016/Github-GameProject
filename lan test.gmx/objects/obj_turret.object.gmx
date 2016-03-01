@@ -78,13 +78,26 @@ canshoot = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(target){
+            <string>if(instance_exists(obj_Zombie)){
+    if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_Zombie).x,instance_nearest(x,y,obj_Zombie).y))) == -1){
+        if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_Zombie).x,instance_nearest(x,y,obj_Zombie).y)))&lt;6){
+            image_angle += 3;
+        }
+    }
+    if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_Zombie).x,instance_nearest(x,y,obj_Zombie).y))) == 1){
+        if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_Zombie).x,instance_nearest(x,y,obj_Zombie).y)))&lt;6){
+            image_angle -= 3;
+        }
+    }
+}
+
+if instance_exists(target){
     if distance_to_object(target) &lt; max_dist
     {
         //it's within range! So lets shoot it!
         if canshoot
         {
-            image_angle = point_direction(x, y, target.x, target.y); //point at the target
+            //image_angle = point_direction(x, y, target.x, target.y); //point at the target
             bullet = instance_create(x,y,obj_bullet);
             with (bullet) {
                 direction = other.image_angle; //set the bullet to point in the right direction too
@@ -116,6 +129,9 @@ if(creator == 0){
 else if(creator == 1){
     base.image_index = obj_client.image_index;
 }
+
+
+
 </string>
           </argument>
         </arguments>
