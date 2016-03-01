@@ -91,6 +91,7 @@ canshoot = true;
     }
 }
 
+
 if instance_exists(target){
     if distance_to_object(target) &lt; max_dist
     {
