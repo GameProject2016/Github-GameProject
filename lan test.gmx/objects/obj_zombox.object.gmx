@@ -177,33 +177,38 @@ if(instance_exists(obj_explosion)){
             <string>if other.creator == 0{
     if(instance_exists(zombie)){
         if(zombie.hp != 2){
-            global.points += 5;
+            buffer_seek(buffer,buffer_seek_start,0);
+                                
+            buffer_write(buffer,buffer_u8, 13); // 4
+            buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                        
+            network_send_packet(socket,buffer, buffer_tell(buffer));
         }
     }
 }else{
     if(instance_exists(zombie)){
-            if(zombie.hp != 2){
-                if(room == rm_Server){
-                    with(obj_server){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                                    
-                        buffer_write(buffer,buffer_u8, 13); // 4
-                        buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
-                                    
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
-                    }
-                }
-                else if(room == rm_Client){
-                    with(obj_client){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                                    
-                        buffer_write(buffer,buffer_u8, 13); // 4
-                        buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
-                                    
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
-                    }
+        if(zombie.hp != 2){
+            if(room == rm_Server){
+                with(obj_server){
+                    buffer_seek(buffer,buffer_seek_start,0);
+                                
+                    buffer_write(buffer,buffer_u8, 12); // 4
+                    buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                
+                    network_send_packet(socket,buffer, buffer_tell(buffer));
                 }
             }
+            else if(room == rm_Client){
+                with(obj_client){
+                    buffer_seek(buffer,buffer_seek_start,0);
+                                
+                    buffer_write(buffer,buffer_u8, 12); // 4
+                    buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                
+                    network_send_packet(socket,buffer, buffer_tell(buffer));
+                }
+            }
+        }
     }
 }
 if(instance_exists(zombie)){
