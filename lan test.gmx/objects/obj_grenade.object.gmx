@@ -63,6 +63,9 @@ if speed&lt;0.1 {
     expl = instance_create(x,y,obj_explosion);
     with(expl){
         depth = other.depth;
+        if(other.creator == 0){
+            creator = 0;
+        }
     }
     destroy(the_target);
 
@@ -80,6 +83,9 @@ if(place_meeting(x,y + 65,obj_Wall)){
         expl = instance_create(x,y,obj_explosion);
         with(expl){
             depth = other.depth;
+            if(other.creator == 0){
+                creator = 0;
+            }
         }
         destroy(the_target);
     

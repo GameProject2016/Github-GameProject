@@ -76,6 +76,7 @@ background_index[0]=choose(background4,background5,background6,background7,backg
     <instance objName="obj_Wall" x="768" y="224" name="inst_81B24ABF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombiespawner" x="1024" y="160" name="inst_32540E0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_minimap" x="4608" y="4896" name="inst_E65E33B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_nightCycle" x="256" y="96" name="inst_8BE47CEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

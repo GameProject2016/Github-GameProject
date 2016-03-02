@@ -127,30 +127,30 @@ if(instance_exists(obj_explosion)){
             }
         }
     }
-else if(distance_to_object(obj_explosion) &lt; 90){
-    if(instance_nearest(x,y,obj_explosion).creator == 0){
-        if(instance_exists(zombie)){
-            zombie.hp -= 2;
-            if(zombie.hp &lt;= 0){
-                global.points += 5;
-                instance_destroy();
+    else if(distance_to_object(obj_explosion) &lt; 90){
+        if(instance_nearest(x,y,obj_explosion).creator == 0){
+            if(instance_exists(zombie)){
+                zombie.hp -= 2;
+                if(zombie.hp &lt;= 0){
+                    global.points += 5;
+                    instance_destroy();
+                }
             }
         }
-    }
-    else{
-        with(zombie){
-            hp -= 2;
-            if(hp &lt;= 0){
-                if(global.socket != noone){
-                    buffer_seek(buffer,buffer_seek_start,0);
-                    buffer_write(buffer,buffer_u8, 31);
-                    buffer_write(buffer,buffer_u32,5);
-                    network_send_packet(socket,buffer, buffer_tell(buffer));
+        else{
+            with(zombie){
+                hp -= 2;
+                if(hp &lt;= 0){
+                    if(global.socket != noone){
+                        buffer_seek(buffer,buffer_seek_start,0);
+                        buffer_write(buffer,buffer_u8, 31);
+                        buffer_write(buffer,buffer_u32,5);
+                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    }
                 }
             }
         }
     }
-}
 }
 </string>
           </argument>
