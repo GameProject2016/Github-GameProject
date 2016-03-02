@@ -197,6 +197,8 @@ if(obj_server.y &gt; (room_height - obj_server.sprite_height + 10)){
 
 chbox.x = x - 2;
 chbox.y = y - 63;
+
+
 </string>
           </argument>
         </arguments>

@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>image_speed = 0;
 name = "Hi";
+
+if(instance_exists(obj_nightCycle)){
+    with(obj_nightCycle){
+        instance_destroy();
+    }
+    instance_create(x,y,obj_nightCycle);
+}
 </string>
           </argument>
         </arguments>
