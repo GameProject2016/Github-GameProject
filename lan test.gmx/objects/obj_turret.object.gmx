@@ -133,7 +133,10 @@ if(creator == 0){
     }
 }
 else{
-    base.image_index = obj_other.image_index;
+    if(instance_exists(obj_other)){
+    
+        base.image_index = obj_other.image_index;
+    }
 }
 
 
