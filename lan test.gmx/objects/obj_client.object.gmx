@@ -289,12 +289,7 @@ if keyboard_check_pressed(ord("E")){
 if grenades &gt; 0{
     //Create grenade
     with(instance_create(x+1,y-51,obj_grenade)){
-        if(room == rm_Server){
-            depth = obj_server.depth - 59;
-        }
-        else if(room == rm_Client){
-            depth = obj_client.depth - 59;
-        }
+        depth = obj_client.depth - 59;
         direction = point_direction(x,y,mouse_x,mouse_y);
         pointx = mouse_x;
         pointy = mouse_y;
