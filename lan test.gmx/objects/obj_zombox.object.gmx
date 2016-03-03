@@ -115,13 +115,25 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 4;
                 if(hp &lt;= 0){
-                    if(global.socket != noone){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                        
-                        buffer_write(buffer,buffer_u8, 31);
-                        buffer_write(buffer,buffer_u32, 5);
-                        
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    if(room == rm_Server){
+                        if(obj_server.socket != noone){
+                            buffer_seek(buffer,buffer_seek_start,0);
+                            
+                            buffer_write(buffer,buffer_u8, 31);
+                            buffer_write(buffer,buffer_u32, 5);
+                            
+                            network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
+                    }
+                    else if(room == rm_Client){
+                        if(obj_client.socket != noone){
+                            buffer_seek(buffer,buffer_seek_start,0);
+                            
+                            buffer_write(buffer,buffer_u8, 31);
+                            buffer_write(buffer,buffer_u32, 5);
+                            
+                            network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
                     }
                 }
             }
@@ -141,11 +153,25 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 2;
                 if(hp &lt;= 0){
-                    if(global.socket != noone){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                        buffer_write(buffer,buffer_u8, 31);
-                        buffer_write(buffer,buffer_u32,5);
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    if(room == rm_Server){
+                        if(obj_server.socket != noone){
+                            buffer_seek(buffer,buffer_seek_start,0);
+                            
+                            buffer_write(buffer,buffer_u8, 31);
+                            buffer_write(buffer,buffer_u32, 5);
+                            
+                            network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
+                    }
+                    else if(room == rm_Client){
+                        if(obj_client.socket != noone){
+                            buffer_seek(buffer,buffer_seek_start,0);
+                            
+                            buffer_write(buffer,buffer_u8, 31);
+                            buffer_write(buffer,buffer_u32, 5);
+                            
+                            network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
                     }
                 }
             }
