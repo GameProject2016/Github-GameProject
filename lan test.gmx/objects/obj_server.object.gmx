@@ -555,12 +555,17 @@ network_destroy(server);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_names);
+            <string>health_s = 40;
+draw_set_font(font_names);
 draw_set_halign(fa_center);
 draw_set_colour(c_dkgray);
-draw_text(x - 1,y-72 - sprite_height / 2,string(name));
+draw_text(x - 1,y-82 - sprite_height / 2,string(name));
 draw_set_colour(c_white);
-draw_text(x,y-70 - sprite_height/2,string(name));
+draw_text(x,y-80 - sprite_height/2,string(name));
+draw_set_colour(c_lime);
+draw_rectangle(x - 37.5,y - sprite_height / 2 - 58,x + 37.5,y - sprite_height / 2 - 55,false);
+draw_set_colour(c_red);
+draw_rectangle(x + 37.5 - ((100-health_s) * 0.75),y - sprite_height / 2 - 58,x + 37.5,y - sprite_height / 2 - 55,false);
 draw_self();
 </string>
           </argument>
