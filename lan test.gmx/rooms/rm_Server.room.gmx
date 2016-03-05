@@ -53,8 +53,9 @@ background_index[0]=choose(background4,background5,background6,background7,backg
   </views>
   <instances>
     <instance objName="obj_Variables" x="448" y="96" name="inst_2C75B0D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_server" x="160" y="245" name="inst_FAFA5D43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_camera" x="960" y="640" name="inst_F725B575" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_server" x="160" y="245" name="inst_FAFA5D43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="192" y="0" name="inst_294BDC7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="0" y="416" name="inst_09F7B171" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="64" y="416" name="inst_F238A532" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Wall" x="128" y="416" name="inst_C935B016" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
