@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>zombie = instance_nearest(x,y + sprite_width / 2 - 6,obj_Zombie);
+take_health = true;
 </string>
           </argument>
         </arguments>
@@ -49,6 +50,29 @@
           <argument>
             <kind>1</kind>
             <string>destroy(zombie);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>take_health = true;
 </string>
           </argument>
         </arguments>
@@ -271,6 +295,64 @@ if(instance_exists(zombie)){
 }
 
 destroy(other);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_client">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(take_health){
+    if(obj_client.health_s != 0){
+        obj_client.health_s -= 1;
+        take_health = false;
+        alarm[1] = 10;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_server">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(take_health){
+    if(obj_server.health_s != 0){
+        obj_server.health_s -= 1;
+        take_health = false;
+        alarm[1] = 10;
+    }
+}
 </string>
           </argument>
         </arguments>
