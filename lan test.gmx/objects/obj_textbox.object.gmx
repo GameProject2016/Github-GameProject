@@ -59,7 +59,12 @@ controller = "wasd";
 
 name = keyboard_string;
 
-global.playername = name;
+if(string_length(string(name)) == 0){
+    global.playername = 'Player 1';
+}
+else{
+    global.playername = name;
+}
 </string>
           </argument>
         </arguments>

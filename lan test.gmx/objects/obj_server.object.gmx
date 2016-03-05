@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>press = false;
+            <string>health_s = 100;
+press = false;
 can_shoot = true;
 
 name = global.playername;
@@ -197,6 +198,8 @@ if(obj_server.y &gt; (room_height - obj_server.sprite_height + 10)){
 
 chbox.x = x - 2;
 chbox.y = y - 63;
+
+
 </string>
           </argument>
         </arguments>
@@ -240,7 +243,7 @@ if(keyboard_check(vk_space)){
         if(!instance_exists(obj_highlight)){
             instance_create(mouse_x,mouse_y,obj_highlight);
         }
-        if(mouse_check_button(mb_left)){
+        if(mouse_check_button_pressed(mb_left)){
             if(obj_highlight.image_index != 0){
                 instance_create(mouse_x,mouse_y,obj_Wall);
                 global.walls += 1;
@@ -310,6 +313,7 @@ if keyboard_check_pressed(ord("E")){
 if grenades &gt; 0{
     //Create grenade
     with(instance_create(x+1,y-51,obj_grenade)){
+        creator = 0;
         depth = obj_server.depth - 59;
         direction = point_direction(x,y,mouse_x,mouse_y);
         pointx = mouse_x;
@@ -552,12 +556,27 @@ network_destroy(server);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font_names);
+            <string>
+
+draw_set_font(font_names);
 draw_set_halign(fa_center);
 draw_set_colour(c_dkgray);
-draw_text(x - 1,y-72 - sprite_height / 2,string(name));
+draw_text(x - 1,y-82 - sprite_height / 2,string(name));
 draw_set_colour(c_white);
-draw_text(x,y-70 - sprite_height/2,string(name));
+draw_text(x,y-80 - sprite_height/2,string(name));
+
+// shadow of health bar
+draw_set_colour(c_dkgray);
+draw_rectangle(x - 36.5,y - sprite_height / 2 - 57,x + 38.5,y - sprite_height / 2 - 54,false);
+
+// health bar
+draw_set_colour(c_lime);
+draw_rectangle(x - 37.5,y - sprite_height / 2 - 58,x + 37.5,y - sprite_height / 2 - 55,false);
+if(health_s != 100){
+    draw_set_colour(c_red);
+    draw_rectangle(x + 37.5 - ((100-health_s) * 0.75),y - sprite_height / 2 - 58,x + 37.5,y - sprite_height / 2 - 55,false);
+}
+
 draw_self();
 </string>
           </argument>

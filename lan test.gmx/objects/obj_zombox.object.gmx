@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>zombie = instance_nearest(x,y + sprite_width / 2 - 6,obj_Zombie);
+<<<<<<< HEAD
+=======
+take_health = true;
+>>>>>>> origin/master
 </string>
           </argument>
         </arguments>
@@ -54,6 +58,32 @@
         </arguments>
       </action>
     </event>
+<<<<<<< HEAD
+=======
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>take_health = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+>>>>>>> origin/master
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -115,6 +145,7 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 4;
                 if(hp &lt;= 0){
+<<<<<<< HEAD
                     if(global.socket != noone){
                         buffer_seek(buffer,buffer_seek_start,0);
                         
@@ -122,6 +153,31 @@ if(instance_exists(obj_explosion)){
                         buffer_write(buffer,buffer_u32, 5);
                         
                         network_send_packet(socket,buffer, buffer_tell(buffer));
+=======
+                    if(room == rm_Server){
+                        with(obj_server){
+                            if(obj_server.socket != noone){
+                                buffer_seek(buffer,buffer_seek_start,0);
+                                
+                                buffer_write(buffer,buffer_u8, 31);
+                                buffer_write(buffer,buffer_u32, 5);
+                                
+                                network_send_packet(socket,buffer, buffer_tell(buffer));
+                            }
+                        }
+                    }
+                    else if(room == rm_Client){
+                        with(obj_client){
+                            if(obj_client.socket != noone){
+                                buffer_seek(buffer,buffer_seek_start,0);
+                                
+                                buffer_write(buffer,buffer_u8, 31);
+                                buffer_write(buffer,buffer_u32, 5);
+                                
+                                network_send_packet(socket,buffer, buffer_tell(buffer));
+                            }
+                        }
+>>>>>>> origin/master
                     }
                 }
             }
@@ -141,11 +197,37 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 2;
                 if(hp &lt;= 0){
+<<<<<<< HEAD
                     if(global.socket != noone){
                         buffer_seek(buffer,buffer_seek_start,0);
                         buffer_write(buffer,buffer_u8, 31);
                         buffer_write(buffer,buffer_u32,5);
                         network_send_packet(socket,buffer, buffer_tell(buffer));
+=======
+                    if(room == rm_Server){
+                        with(obj_server){
+                            if(obj_server.socket != noone){
+                                buffer_seek(buffer,buffer_seek_start,0);
+                                
+                                buffer_write(buffer,buffer_u8, 31);
+                                buffer_write(buffer,buffer_u32, 5);
+                                
+                                network_send_packet(socket,buffer, buffer_tell(buffer));
+                            }
+                        }
+                    }
+                    else if(room == rm_Client){
+                        with(obj_client){
+                            if(obj_client.socket != noone){
+                                buffer_seek(buffer,buffer_seek_start,0);
+                                
+                                buffer_write(buffer,buffer_u8, 31);
+                                buffer_write(buffer,buffer_u32, 5);
+                                
+                                network_send_packet(socket,buffer, buffer_tell(buffer));
+                            }
+                        }
+>>>>>>> origin/master
                     }
                 }
             }
@@ -177,23 +259,64 @@ if(instance_exists(obj_explosion)){
             <string>if other.creator == 0{
     if(instance_exists(zombie)){
         if(zombie.hp != 2){
-            global.points += 5;
-        }
-    }
-}else{
-    if(instance_exists(zombie)){
-        if(zombie.hp != 2){
-            if global.socket != noone{
-                buffer_seek(buffer,buffer_seek_start,0);
-                            
-                buffer_write(buffer,buffer_u8, 13); // 4
-                buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
-                            
-                network_send_packet(socket,buffer, buffer_tell(buffer));
+            if(room == rm_Server){
+                with(obj_server){
+                    if(socket != noone){
+                        buffer_seek(buffer,buffer_seek_start,0);
+                                            
+                        buffer_write(buffer,buffer_u8, 12); // 4
+                        buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                    
+                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    }
+                    else{
+                        global.points += 5;
+                    }
+                }
+            }
+            else if(room == rm_Client){
+                with(obj_client){
+                    if(socket != noone){
+                        buffer_seek(buffer,buffer_seek_start,0);
+                                            
+                        buffer_write(buffer,buffer_u8, 12); // 4
+                        buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                    
+                        network_send_packet(socket,buffer, buffer_tell(buffer));
+                    }
+                    else{
+                        global.points += 5;
+                    }
+                }
             }
         }
     }
-}
+}/*else{
+    if(instance_exists(zombie)){
+        if(zombie.hp != 2){
+            if(room == rm_Server){
+                with(obj_server){
+                    buffer_seek(buffer,buffer_seek_start,0);
+                                
+                    buffer_write(buffer,buffer_u8, 12); // 4
+                    buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                
+                    network_send_packet(socket,buffer, buffer_tell(buffer));
+                }
+            }
+            else if(room == rm_Client){
+                with(obj_client){
+                    buffer_seek(buffer,buffer_seek_start,0);
+                                
+                    buffer_write(buffer,buffer_u8, 12); // 4
+                    buffer_write(buffer,buffer_u32, 5);// 1,mouse_x      
+                                
+                    network_send_packet(socket,buffer, buffer_tell(buffer));
+                }
+            }
+        }
+    }
+}*/
 if(instance_exists(zombie)){
     if(zombie.hp != 0){
         zombie.hp -= 2;
@@ -204,6 +327,64 @@ if(instance_exists(zombie)){
 }
 
 destroy(other);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_client">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(take_health){
+    if(obj_client.health_s != 0){
+        obj_client.health_s -= 1;
+        take_health = false;
+        alarm[1] = 10;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_server">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(take_health){
+    if(obj_server.health_s != 0){
+        obj_server.health_s -= 1;
+        take_health = false;
+        alarm[1] = 10;
+    }
+}
 </string>
           </argument>
         </arguments>

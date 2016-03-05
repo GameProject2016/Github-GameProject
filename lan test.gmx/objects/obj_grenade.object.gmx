@@ -28,6 +28,9 @@
             <string>speed = 8;
 
 slow = 0.05;
+
+creator = 1;
+
 </string>
           </argument>
         </arguments>
@@ -59,9 +62,13 @@ if speed&lt;0.1 {
     obj_camera.shaking = true;
     
     expl = instance_create(x,y,obj_explosion);
-    with(expl){
-        depth = other.depth;
+    if(creator == 0){
+        expl.creator = 0;
     }
+    else{
+        expl.creator = 1;
+    }
+    expl.depth = depth;
     destroy(the_target);
 
     instance_destroy();
@@ -76,9 +83,13 @@ if(place_meeting(x,y + 65,obj_Wall)){
         obj_camera.shaking = true;
     
         expl = instance_create(x,y,obj_explosion);
-        with(expl){
-            depth = other.depth;
+        if(creator == 0){
+            expl.creator = 0;
         }
+        else{
+            expl.creator = 1;
+        }
+        expl.depth = depth;
         destroy(the_target);
     
         instance_destroy();
@@ -112,8 +123,9 @@ if(place_meeting(x,y + 65,obj_Wall)){
             <string>obj_camera.shaking = true;
  
 expl = instance_create(x,y,obj_explosion);
-with(expl){
-    depth = other.depth;
+if(creator == 0){
+    expl.creator = 0;
+    expl.depth = depth;
 }
 destroy(other);
 

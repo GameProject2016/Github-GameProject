@@ -101,7 +101,7 @@ switch(message_id){
         
     case 12:
         var point = buffer_read(buffer, buffer_u32); //bg
-        global.otherpoints = point;
+        global.otherpoints += point;
         break;   
         
     case 13:
