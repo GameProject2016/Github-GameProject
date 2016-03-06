@@ -59,11 +59,7 @@
     <instance objName="obj_camera" x="160" y="384" name="inst_783C2CC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_minimap" x="288" y="192" name="inst_D986C4D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Variables" x="64" y="192" name="inst_C7578872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-<<<<<<< HEAD
-    <instance objName="&lt;undefined&gt;" x="704" y="160" name="inst_7BE068DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-=======
     <instance objName="obj_nightCycle" x="704" y="160" name="inst_7BE068DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
->>>>>>> origin/master
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

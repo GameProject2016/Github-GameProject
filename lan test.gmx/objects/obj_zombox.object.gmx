@@ -26,10 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>zombie = instance_nearest(x,y + sprite_width / 2 - 6,obj_Zombie);
-<<<<<<< HEAD
-=======
 take_health = true;
->>>>>>> origin/master
 </string>
           </argument>
         </arguments>
@@ -58,8 +55,6 @@ take_health = true;
         </arguments>
       </action>
     </event>
-<<<<<<< HEAD
-=======
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -83,7 +78,6 @@ take_health = true;
         </arguments>
       </action>
     </event>
->>>>>>> origin/master
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -145,15 +139,6 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 4;
                 if(hp &lt;= 0){
-<<<<<<< HEAD
-                    if(global.socket != noone){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                        
-                        buffer_write(buffer,buffer_u8, 31);
-                        buffer_write(buffer,buffer_u32, 5);
-                        
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
-=======
                     if(room == rm_Server){
                         with(obj_server){
                             if(obj_server.socket != noone){
@@ -177,7 +162,6 @@ if(instance_exists(obj_explosion)){
                                 network_send_packet(socket,buffer, buffer_tell(buffer));
                             }
                         }
->>>>>>> origin/master
                     }
                 }
             }
@@ -197,13 +181,6 @@ if(instance_exists(obj_explosion)){
             with(zombie){
                 hp -= 2;
                 if(hp &lt;= 0){
-<<<<<<< HEAD
-                    if(global.socket != noone){
-                        buffer_seek(buffer,buffer_seek_start,0);
-                        buffer_write(buffer,buffer_u8, 31);
-                        buffer_write(buffer,buffer_u32,5);
-                        network_send_packet(socket,buffer, buffer_tell(buffer));
-=======
                     if(room == rm_Server){
                         with(obj_server){
                             if(obj_server.socket != noone){
@@ -227,7 +204,6 @@ if(instance_exists(obj_explosion)){
                                 network_send_packet(socket,buffer, buffer_tell(buffer));
                             }
                         }
->>>>>>> origin/master
                     }
                 }
             }

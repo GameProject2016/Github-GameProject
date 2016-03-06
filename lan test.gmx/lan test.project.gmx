@@ -78,6 +78,7 @@
       <object>objects\obj_turret</object>
     </objects>
     <objects name="Menu">
+      <object>objects\obj_select</object>
       <object>objects\obj_textbox</object>
       <object>objects\obj_start_host</object>
       <object>objects\obj_join_host</object>
@@ -85,7 +86,6 @@
       <object>objects\obj_offline</object>
       <object>objects\obj_online</object>
       <object>objects\obj_start</object>
-      <object>objects\obj_select</object>
     </objects>
     <objects name="Level">
       <object>objects\obj_Wall</object>
