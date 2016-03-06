@@ -83,7 +83,7 @@ else if(alpha &lt;= 0){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(alpha &lt; 0.9){
+            <string>if(alpha &lt; 0.8){
     alpha += 0.0005;
     alarm[0] = 1;
 }

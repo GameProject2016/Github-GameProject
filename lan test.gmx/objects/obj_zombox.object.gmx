@@ -129,7 +129,7 @@ if(instance_exists(obj_sexplosion)){
     if(distance_to_object(instance_nearest(x,y,obj_sexplosion)) &lt; 40){
         if(instance_exists(zombie)){
             zombie.hp -= 4;
-            if(zombie.hp &lt; 0){
+            if(zombie.hp &lt;= 0){
                 if(room == rm_Server){
                     with(obj_server){
                         if(socket != noone){
@@ -139,6 +139,9 @@ if(instance_exists(obj_sexplosion)){
                             buffer_write(buffer,buffer_u32, 5);
                             
                             network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
+                        else{
+                            global.points += 5;
                         }
                     }
                 }
@@ -165,7 +168,7 @@ if(instance_exists(obj_sexplosion)){
     else if(distance_to_object(instance_nearest(x,y,obj_sexplosion)) &lt; 90){
         if(instance_exists(zombie)){
             zombie.hp -= 2;
-            if(zombie.hp &lt; 0){
+            if(zombie.hp &lt;= 0){
                 if(room == rm_Server){
                     with(obj_server){
                         if(socket != noone){
@@ -175,6 +178,9 @@ if(instance_exists(obj_sexplosion)){
                             buffer_write(buffer,buffer_u32, 5);
                             
                             network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
+                        else{
+                            global.points += 5;
                         }
                     }
                 }
@@ -219,6 +225,9 @@ if(instance_exists(obj_cexplosion)){
                             
                             network_send_packet(socket,buffer, buffer_tell(buffer));
                         }
+                        else{
+                            global.points += 5;
+                        }
                     }
                 }
                 else{
@@ -254,6 +263,9 @@ if(instance_exists(obj_cexplosion)){
                             buffer_write(buffer,buffer_u32, 5);
                             
                             network_send_packet(socket,buffer, buffer_tell(buffer));
+                        }
+                        else{
+                            global.points += 5;
                         }
                     }
                 }
