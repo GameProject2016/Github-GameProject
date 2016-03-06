@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.5;
-var creator;
-creator = 1;
 </string>
           </argument>
         </arguments>

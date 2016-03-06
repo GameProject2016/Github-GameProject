@@ -246,7 +246,7 @@ if(keyboard_check_released(vk_space)){
 // turrent
 if keyboard_check_pressed(ord("E")){
     if global.points &gt;= 50{
-        turret =instance_create(x,y,obj_turret);
+        turret =instance_create(x,y,obj_cturret);
         turret.creator = 0;
         global.points -= 50;
         //send
@@ -288,13 +288,12 @@ if keyboard_check_pressed(ord("E")){
             <string>/// Throw grenade
 if grenades &gt; 0{
     //Create grenade
-    with(instance_create(x+1,y-51,obj_grenade)){
+    with(instance_create(x+1,y-51,obj_cgrenade)){
         depth = obj_client.depth - 59;
         direction = point_direction(x,y,mouse_x,mouse_y);
         pointx = mouse_x;
         pointy = mouse_y;
         the_target = instance_create(pointx,pointy,obj_target);
-        creator = 0;
     }
     
     //Send grenade
@@ -359,11 +358,10 @@ if grenades &gt; 0{
     if(can_shoot){
         /// Shoot + send to server
         if ammo &gt; 0{
-            bullet = instance_create(x+1,y-51,obj_bullet);
+            bullet = instance_create(x+1,y-51,obj_cbullet);
                 with(bullet){
                 direction = point_direction(x,y,mouse_x,mouse_y);
                 depth = obj_client.depth - 59;
-                creator = 0;
                 }
             
             if socket != noone{

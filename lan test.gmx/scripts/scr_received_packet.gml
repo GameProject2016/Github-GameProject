@@ -31,9 +31,17 @@ switch(message_id){
     case 4: //create others bullet
         var mx = buffer_read(buffer, buffer_u32);
         var my = buffer_read(buffer,buffer_u32);
-        with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_bullet)){
-        direction = point_direction(obj_other.x,obj_other.y,mx,my);
-        creator = 1;
+        if(room == rm_Server){
+            with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_cbullet)){
+                direction = point_direction(obj_other.x,obj_other.y,mx,my);
+                creator = 1;
+            }
+        }
+        else if(room == rm_Client){
+            with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_sbullet)){
+                direction = point_direction(obj_other.x,obj_other.y,mx,my);
+                creator = 1;
+            }
         }
         break;
         
@@ -59,10 +67,19 @@ switch(message_id){
     case 8: //create grenade
         var mx = buffer_read(buffer, buffer_u32); //zonbie x
         var my = buffer_read(buffer,buffer_u32); //zonbie y
-        with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_grenade)){
-        direction = point_direction(obj_other.x,obj_other.y,mx,my);
-        the_target = instance_create(mx,my,obj_target);
-        the_target.image_alpha = 0;
+        if(room == rm_Server){
+            with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_cgrenade)){
+                direction = point_direction(obj_other.x,obj_other.y,mx,my);
+                the_target = instance_create(mx,my,obj_target);
+                the_target.image_alpha = 0;
+            }
+        }
+        else if(room == rm_Client){
+            with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_sgrenade)){
+                direction = point_direction(obj_other.x,obj_other.y,mx,my);
+                the_target = instance_create(mx,my,obj_target);
+                the_target.image_alpha = 0;
+            }
         }
         break;
         

@@ -70,12 +70,16 @@
       <object>objects\obj_server</object>
       <object>objects\obj_client</object>
       <object>objects\obj_other</object>
-      <object>objects\obj_bullet</object>
-      <object>objects\obj_grenade</object>
+      <object>objects\obj_sbullet</object>
+      <object>objects\obj_cbullet</object>
+      <object>objects\obj_sgrenade</object>
+      <object>objects\obj_cgrenade</object>
       <object>objects\obj_target</object>
       <object>objects\obj_chbox</object>
-      <object>objects\obj_explosion</object>
-      <object>objects\obj_turret</object>
+      <object>objects\obj_sexplosion</object>
+      <object>objects\obj_cexplosion</object>
+      <object>objects\obj_sturret</object>
+      <object>objects\obj_cturret</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_select</object>
