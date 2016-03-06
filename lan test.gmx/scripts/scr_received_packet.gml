@@ -34,13 +34,11 @@ switch(message_id){
         if(room == rm_Server){
             with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_cbullet)){
                 direction = point_direction(obj_other.x,obj_other.y,mx,my);
-                creator = 1;
             }
         }
         else if(room == rm_Client){
             with(instance_create(obj_other.x + 1,obj_other.y - 51,obj_sbullet)){
                 direction = point_direction(obj_other.x,obj_other.y,mx,my);
-                creator = 1;
             }
         }
         break;
@@ -91,8 +89,12 @@ switch(message_id){
     case 10: //create turret in client
         var tx = buffer_read(buffer, buffer_u32); //wall x
         var ty = buffer_read(buffer,buffer_u32); //wall y
-        turret = instance_create(tx,ty,obj_turret);
-        turret.creator = 1;
+        if(room == rm_Server){
+            turret = instance_create(tx,ty,obj_cturret);
+        }
+        else if(room == rm_Client){
+            turret = instance_create(tx,ty,obj_sturret);
+        }
         break;
         
     case 11: //create turret in client
