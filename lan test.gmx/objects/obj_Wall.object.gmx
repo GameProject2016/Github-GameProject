@@ -108,7 +108,7 @@ y = round(y/32)*32;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = -y - obj_Wall.sprite_height + 5;
+            <string>depth = -(y + obj_Wall.sprite_height - 5);
 
 x= round(x/64)*64;
 y = round(y/32)*32;

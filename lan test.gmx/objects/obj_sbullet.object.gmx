@@ -49,7 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>if(place_meeting(x,y + 65,obj_Wall)){
-    if(depth &gt; other.depth - 3){
+    if(depth &gt; other.depth){
         instance_destroy();
     }
 }

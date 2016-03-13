@@ -79,14 +79,16 @@ canshoot = true;
           <argument>
             <kind>1</kind>
             <string>if(instance_exists(obj_Zombie)){
-    if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y))) == -1){
-        if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y)))&lt;12){
-            image_angle += 6;
+    if(instance_exists(obj_zombox)){
+        if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y))) == -1){
+            if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y)))&lt;12){
+                image_angle += 6;
+            }
         }
-    }
-    if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y))) == 1){
-        if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y)))&lt;12){
-            image_angle -= 6;
+        if(sign(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y))) == 1){
+            if(!abs(angle_difference(image_angle, point_direction(x,y,instance_nearest(x,y,obj_zombox).x,instance_nearest(x,y,obj_zombox).y)))&lt;12){
+                image_angle -= 6;
+            }
         }
     }
 }
