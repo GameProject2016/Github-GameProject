@@ -39,6 +39,8 @@
     <sprite>sprites\spr_highlight</sprite>
     <sprite>sprites\spr_scroll</sprite>
     <sprite>sprites\spr_turretbase</sprite>
+    <sprite>sprites\spr_light</sprite>
+    <sprite>sprites\spr_torch</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background8</background>
@@ -109,6 +111,7 @@
     <object>objects\obj_turretbase</object>
     <object>objects\object33</object>
     <object>objects\obj_nightCycle</object>
+    <object>objects\obj_torch</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Select</room>

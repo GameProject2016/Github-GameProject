@@ -63,7 +63,10 @@ wall = false;
 
 chbox = instance_create(x,y,obj_chbox);
 
-
+light = instance_create(x,y,obj_torch);
+with(light){
+    visible = false;
+}
 
 
 </string>
