@@ -65,7 +65,7 @@ socket = network_create_socket(type);
           <argument>
             <kind>1</kind>
             <string>//if instance_exists(obj_other){
-    zomb = instance_create(x,y,obj_Zombie);
+    zomb = choose(instance_create(-20,random(room_height),obj_Zombie),instance_create(room_width+20,random(room_height),obj_Zombie),instance_create(random(room_width),-20,obj_Zombie),instance_create(random(room_width),room_height+20,obj_Zombie))
     alarm[0] = spawn_speed * 30;
     if spawn_speed &gt; 0.75 {
         spawn_speed -= 0.005;

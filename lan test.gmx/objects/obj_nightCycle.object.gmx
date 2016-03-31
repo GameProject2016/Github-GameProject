@@ -129,9 +129,7 @@ with(obj_torch){
     draw_set_blend_mode(bm_normal);
 }
 surface_reset_target();
-if(surface_exists(nightCycleSurf)){
-    draw_surface_ext(nightCycleSurf, view_xview,view_yview,1,1,0,c_white,alpha);
-}
+/*
 if instance_exists(obj_spotlightLight){
     with(obj_spotlightLight){
     
@@ -142,7 +140,7 @@ if instance_exists(obj_spotlightLight){
     surface_reset_target();
     
 }
-
+*/
 if(surface_exists(nightCycleSurf)){
         draw_surface_ext(nightCycleSurf, view_xview,view_yview,1,1,0,c_white,alpha);
     }
