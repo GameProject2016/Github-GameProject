@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = mean(obj_server.x,mouse_x);
-y = mean(obj_server.y,mouse_y);
+            <string>x = mean(obj_server.x,obj_server.x,mouse_x);
+y = mean(obj_server.y,obj_server.y,mouse_y);
 
 </string>
           </argument>

@@ -386,6 +386,7 @@ if grenades &gt; 0{
                 bullet = instance_create(x+1,y-51,obj_sbullet);
                 with(bullet){
                 direction = point_direction(x,y,mouse_x,mouse_y);
+                image_angle = point_direction(x,y,mouse_x,mouse_y);
                 depth = obj_server.depth - 59;
                 }
                 
