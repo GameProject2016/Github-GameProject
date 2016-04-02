@@ -36,12 +36,18 @@
       <sprite>sprites\spr_join_btn</sprite>
       <sprite>sprites\spr_controls</sprite>
     </sprites>
+    <sprites name="Particles">
+      <sprite>sprites\spr_flame_particle</sprite>
+      <sprite>sprites\spr_rain</sprite>
+      <sprite>sprites\spr_rain_particle</sprite>
+      <sprite>sprites\spr_rain2</sprite>
+      <sprite>sprites\spr_rain3</sprite>
+    </sprites>
     <sprite>sprites\spr_turret</sprite>
     <sprite>sprites\spr_highlight</sprite>
     <sprite>sprites\spr_scroll</sprite>
     <sprite>sprites\spr_turretbase</sprite>
     <sprite>sprites\spr_light</sprite>
-    <sprite>sprites\spr_flame_particle</sprite>
     <sprite>sprites\spr_torch</sprite>
     <sprite>sprites\spotlight</sprite>
   </sprites>
@@ -97,6 +103,9 @@
       <object>objects\obj_nightCycle</object>
       <object>objects\obj_torch</object>
       <object>objects\obj_view</object>
+      <objects name="Rain">
+        <object>objects\obj_rain</object>
+      </objects>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_Zombie</object>
